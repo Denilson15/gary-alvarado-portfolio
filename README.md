@@ -24,7 +24,7 @@ npm run format       # format everything with Prettier (4-space indentation)
 ```text
 public/                     Static files: favicon, social preview images (og-en.jpg, og-es.jpg), resume.pdf
 src/
-    assets/                 Images optimized at build time (portrait, project screenshots)
+    assets/                 Images optimized at build time (project screenshots)
     components/             Small reusable pieces: Header, ProjectCard, FormField, …
     content/projects/       One JSON file per project
     content.config.ts       Schema for project files
@@ -67,19 +67,22 @@ src/
     ```
 
 2. Save it. The Projects page picks it up automatically, with no layout code to touch.
+   `live` and `client` projects appear as large case-study rows; `code` and `in-progress` projects
+   appear in the numbered "More work" index.
 
 Field notes:
 
-| Field                            | Notes                                                                                         |
-| -------------------------------- | --------------------------------------------------------------------------------------------- |
-| `summary`, `problem`, `solution` | `en` is required. If `es` is missing, the Spanish site shows the English text.                |
-| `category`                       | `live`, `client`, `code`, or `in-progress`. Each one is its own section on the Projects page. |
-| `image`                          | Optional screenshot in `src/assets/projects/`. Without one, a colored preview card is shown.  |
-| `hue`                            | Color (0 to 360) of that preview card.                                                        |
-| `team`                           | `true` adds a "Team project" badge.                                                           |
-| `featured`                       | `true` shows it under "Selected work" on the home page (the first 3 are used).                |
-| `order`                          | Sort order inside its category. Lower numbers come first.                                     |
-| `visible`                        | `false` hides it without deleting the file.                                                   |
+| Field                            | Notes                                                                                               |
+| -------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `summary`, `problem`, `solution` | `en` is required. If `es` is missing, the Spanish site shows the English text.                      |
+| `category`                       | `live`, `client`, `code`, or `in-progress`. Each one is its own section on the Projects page.       |
+| `image`                          | Optional screenshot in `src/assets/projects/`. Without one, a dark preview with the title is shown. |
+| `hue`                            | Glow color (0 to 360) of that preview.                                                              |
+| `year`                           | Shown in the "More work" index, e.g. `2026`.                                                        |
+| `team`                           | `true` adds a "Team project" badge.                                                                 |
+| `featured`                       | `true` shows it under "Selected work" on the home page (the first 3 are used).                      |
+| `order`                          | Sort order inside its category. Lower numbers come first.                                           |
+| `visible`                        | `false` hides it without deleting the file.                                                         |
 
 **Screenshots:** take them at 1440 × 900 (16:10 works best), save them as PNG or JPG in
 `src/assets/projects/`, and add the `image` field. Astro resizes and converts them to WebP when it builds.
@@ -112,8 +115,20 @@ you through the contact and quote forms, which Netlify forwards to your inbox. R
 `public/resume.pdf` is the public copy of your resume. Its phone number is removed and its location reads "San Francisco
 Bay Area". When you update your resume, export a new PDF without the phone number and replace this file.
 
-The portrait is `src/assets/gary-alvarado.jpg`. To replace it, swap the file and keep the same name. A 4:5 crop
-works best. The social preview images (`public/og-en.jpg`, `public/og-es.jpg`) are 1200 × 630.
+The social preview images (`public/og-en.jpg`, `public/og-es.jpg`) are 1200 × 630 and match the hero design.
+
+## Design
+
+- **Dark by default.** The theme toggle offers a light mode and remembers the choice. Hero bands at the top of
+  every page stay dark in both themes (`.surface-dark` in `src/styles/global.css`).
+- **Hero backdrop:** `src/components/CvBackdrop.astro` draws drifting keypoints and tracking boxes on a canvas,
+  a nod to computer vision. It starts once the page is idle, pauses off-screen, and draws a single still frame
+  for visitors who prefer reduced motion. Tune `density` in `HeroSection.astro`.
+- **Type:** Inter Tight for headlines, a Fraunces italic accent line, Inter for body text, and JetBrains Mono for labels.
+- **Projects:** `CaseStudyRow.astro` (large alternating rows) and `ProjectIndex.astro` (numbered list with a
+  floating screenshot on hover for mouse users).
+- **Design skill:** `.claude/skills/ui-ux-pro-max/` is the [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
+  skill (MIT). Claude Code loads it automatically in this repo for design and accessibility guidance.
 
 ## Deploy to Netlify
 
@@ -132,10 +147,10 @@ Every push to `main` redeploys the site.
 
 - Semantic landmarks, skip link, visible focus rings, labeled controls, and keyboard-friendly menus
 - Text colors meet WCAG AA in both themes. Tokens live in `src/styles/global.css`.
-- Light and dark mode follow the system setting until the visitor picks one; the choice is remembered.
+- The site opens in dark mode; visitors can switch to light mode, and the choice is remembered.
 - Scroll and hover animations turn off when `prefers-reduced-motion` is set.
-- On the last check (local preview), Lighthouse scored 98–99 for Performance and 100 for Accessibility,
-  Best Practices, and SEO, and axe-core found no violations on any page in either theme.
+- On the last check (local preview), Lighthouse scored 97 for Performance and 100 for Accessibility,
+  Best Practices, and SEO, with no layout shift, and axe-core found no violations on any page in either theme.
 
 ## To fill in
 
