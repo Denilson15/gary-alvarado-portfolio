@@ -16,6 +16,7 @@
     "category": "client",
     "liveUrl": "https://ba-diamond-len.netlify.app/",
     "repoUrl": "https://github.com/Denilson15/diamond-lens",
+    "image": "../../assets/projects/diamond-lens.jpg",
     "hue": 222,
     "order": 1
 }
