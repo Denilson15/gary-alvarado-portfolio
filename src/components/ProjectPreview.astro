@@ -1,7 +1,7 @@
 ---
 /**
- * Decorative stand-in shown when a project has no screenshot yet.
- * Add an `image` to the project's JSON file to replace it.
+ * Stand-in artwork shown when a project has no screenshot yet. Dark, with a dotted
+ * keypoint grid and the project title. Add an `image` to the project's JSON file to replace it.
  */
 interface Props {
     title: string;
@@ -9,57 +9,40 @@ interface Props {
 }
 
 const { title, hue } = Astro.props;
-const initials = title
-    .split(/[\s:.-]+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((word) => word[0]?.toUpperCase())
-    .join("");
 ---
 
 <div
-    class="project-preview relative h-full w-full overflow-hidden"
+    class="project-preview surface-dark relative flex h-full w-full items-end overflow-hidden p-6 sm:p-8"
     style={`--hue: ${hue}`}
     aria-hidden="true"
 >
-    <span class="absolute -top-6 right-4 font-display text-[9rem] leading-none font-semibold tracking-tighter opacity-90 select-none">
-        {initials}
+    <span class="relative max-w-[14ch] font-display text-3xl leading-[0.95] font-bold tracking-tight text-white/90 sm:text-5xl">
+        {title}
     </span>
 </div>
 
 <style>
     .project-preview {
-        color: hsl(var(--hue) 45% 28% / 0.22);
         background:
-            radial-gradient(120% 90% at 85% 0%, hsl(var(--hue) 80% 72% / 0.55), transparent 60%),
+            radial-gradient(70% 90% at 85% 15%, hsl(var(--hue) 70% 50% / 0.35), transparent 65%),
             radial-gradient(
-                90% 80% at 0% 100%,
-                hsl(calc(var(--hue) + 40) 70% 70% / 0.4),
+                60% 70% at 10% 100%,
+                hsl(calc(var(--hue) + 40) 60% 45% / 0.25),
                 transparent 60%
             ),
-            linear-gradient(135deg, hsl(var(--hue) 40% 96%), hsl(var(--hue) 35% 90%));
+            #0d1114;
     }
 
     .project-preview::before {
         content: "";
         position: absolute;
         inset: 0;
-        background-image:
-            linear-gradient(hsl(var(--hue) 30% 40% / 0.08) 1px, transparent 1px),
-            linear-gradient(90deg, hsl(var(--hue) 30% 40% / 0.08) 1px, transparent 1px);
-        background-size: 28px 28px;
-        mask-image: linear-gradient(to bottom, black, transparent 85%);
-    }
-
-    :global([data-theme="dark"]) .project-preview {
-        color: hsl(var(--hue) 70% 75% / 0.2);
-        background:
-            radial-gradient(120% 90% at 85% 0%, hsl(var(--hue) 70% 45% / 0.45), transparent 60%),
-            radial-gradient(
-                90% 80% at 0% 100%,
-                hsl(calc(var(--hue) + 40) 60% 40% / 0.35),
-                transparent 60%
-            ),
-            linear-gradient(135deg, hsl(var(--hue) 25% 14%), hsl(var(--hue) 20% 10%));
+        background-image: radial-gradient(
+            circle,
+            hsl(var(--hue) 60% 80% / 0.35) 1px,
+            transparent 1.5px
+        );
+        background-size: 22px 22px;
+        mask-image: linear-gradient(160deg, black 10%, transparent 75%);
     }
 </style>

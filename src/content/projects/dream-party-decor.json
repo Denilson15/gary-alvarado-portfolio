@@ -14,6 +14,7 @@
     },
     "tags": ["Astro", "Tailwind CSS", "TypeScript", "Netlify"],
     "category": "client",
+    "year": 2026,
     "liveUrl": "https://dreampartydecor.netlify.app/",
     "repoUrl": "https://github.com/Denilson15/dream-party-decor-webapge",
     "image": "../../assets/projects/dream-party-decor.jpg",

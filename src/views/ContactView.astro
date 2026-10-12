@@ -7,7 +7,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import FormField from "@/components/FormField.astro";
 import Icon, { type IconName } from "@/components/Icon.astro";
 import NetlifyForm from "@/components/NetlifyForm.astro";
-import SectionHeading from "@/components/SectionHeading.astro";
+import HeroSection from "@/components/HeroSection.astro";
 
 interface Props {
     lang: Lang;
@@ -53,21 +53,18 @@ const links: {
     title={t("meta.contact.title")}
     description={t("meta.contact.description")}
 >
-    <div class="container-page pt-12 sm:pt-16 lg:pt-24">
-        <SectionHeading
-            level={1}
-            eyebrow={t("contact.eyebrow")}
-            title={t("contact.title")}
-            lead={t("contact.lead")}
-        />
-    </div>
+    <HeroSection
+        eyebrow={t("contact.eyebrow")}
+        title={t("contact.title")}
+        lead={t("contact.lead")}
+    />
 
-    <div class="container-page grid gap-6 pt-14 lg:grid-cols-[1.5fr_1fr]">
+    <div class="container-page grid gap-6 pt-16 lg:grid-cols-[1.5fr_1fr]">
         <section
             class="min-w-0 rounded-[2rem] border border-line bg-surface p-6 sm:p-10"
             aria-labelledby="form-heading"
         >
-            <h2 id="form-heading" class="mb-6 text-2xl font-medium tracking-tight">
+            <h2 id="form-heading" class="mb-6 text-3xl">
                 {t("contact.formTitle")}
             </h2>
             <NetlifyForm lang={lang} name="contact" submitLabel={t("contact.form.submit")}>
@@ -111,7 +108,7 @@ const links: {
 
         <aside class="flex min-w-0 flex-col gap-6" aria-labelledby="elsewhere-heading">
             <div class="rounded-[2rem] border border-line bg-surface p-6 sm:p-8">
-                <h2 id="elsewhere-heading" class="text-2xl font-medium tracking-tight">
+                <h2 id="elsewhere-heading" class="text-3xl">
                     {t("contact.elsewhereTitle")}
                 </h2>
                 <ul class="mt-5 divide-y divide-line">

@@ -1,0 +1,124 @@
+---
+import { getImage } from "astro:assets";
+import type { Lang } from "@/i18n/config";
+import { localized, useTranslations } from "@/i18n/utils";
+import type { Project } from "@/lib/projects";
+import Icon from "./Icon.astro";
+
+/**
+ * Compact numbered list of projects. Every row shows its summary, so nothing depends
+ * on hover. With a mouse, hovering a row that has a screenshot shows a floating preview.
+ */
+interface Props {
+    projects: Project[];
+    lang: Lang;
+    /** Number shown on the first row. */
+    start?: number;
+}
+
+const { projects, lang, start = 1 } = Astro.props;
+const t = useTranslations(lang);
+const newTab = t("a11y.opensInNewTab");
+
+const rows = await Promise.all(
+    projects.map(async (project) => ({
+        project,
+        preview: project.data.image
+            ? (await getImage({ src: project.data.image, width: 560, format: "webp" })).src
+            : undefined,
+    })),
+);
+---
+
+<div class="project-index relative" data-project-index>
+    <ol class="border-b border-line">
+        {rows.map(({ project, preview }, index) => {
+            const { data } = project;
+            const url = data.liveUrl ?? data.repoUrl;
+            return (
+                <li
+                    class="group relative grid grid-cols-[2.5rem_1fr_auto] items-baseline gap-x-4 gap-y-2 border-t border-line py-7 transition-colors hover:bg-surface-muted/60 sm:grid-cols-[3.5rem_1fr_auto] sm:px-3 md:grid-cols-[3.5rem_1.2fr_1fr_4rem_auto]"
+                    data-preview={preview}
+                    data-reveal
+                >
+                    <span class="font-mono text-sm text-accent" aria-hidden="true">
+                        {String(start + index).padStart(2, "0")}
+                    </span>
+                    <div>
+                        <h3 class="text-xl leading-snug sm:text-2xl">
+                            {url ? (
+                                <a
+                                    href={url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="after:absolute after:inset-0 hover:text-accent"
+                                >
+                                    {data.title}
+                                    <span class="sr-only"> {newTab}</span>
+                                </a>
+                            ) : (
+                                data.title
+                            )}
+                        </h3>
+                        <p class="mt-1.5 max-w-xl text-sm leading-relaxed text-ink-muted">
+                            {localized(data.summary, lang)}
+                        </p>
+                        {data.category === "in-progress" && (
+                            <p class="mt-2 inline-block rounded-full bg-warn-bg px-2.5 py-0.5 font-mono text-[11px] tracking-wider text-warn-ink uppercase">
+                                {t("projects.status.in-progress")}
+                            </p>
+                        )}
+                    </div>
+                    <p class="col-start-2 font-mono text-xs leading-relaxed text-ink-muted md:col-start-auto">
+                        {data.tags.join(" · ")}
+                    </p>
+                    <p class="hidden font-mono text-xs text-ink-muted md:block">{data.year}</p>
+                    <span
+                        class="row-start-1 inline-flex size-10 items-center justify-center self-center rounded-full border border-line text-ink transition-colors group-hover:border-accent group-hover:bg-accent group-hover:text-accent-ink md:col-start-5"
+                        aria-hidden="true"
+                    >
+                        <Icon name="arrow-up-right" class="size-4" />
+                    </span>
+                </li>
+            );
+        })}
+    </ol>
+    <img
+        class="index-preview pointer-events-none fixed top-0 left-0 z-30 hidden w-72 rounded-xl border border-line shadow-2xl shadow-black/40"
+        alt=""
+        aria-hidden="true"
+        data-index-preview
+    />
+</div>
+
+<style>
+    .index-preview {
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .index-preview.is-active {
+        opacity: 1;
+    }
+</style>
+
+<script>
+    // Floating screenshot that follows the cursor over rows that have one (mouse only).
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        for (const list of document.querySelectorAll<HTMLElement>("[data-project-index]")) {
+            const preview = list.querySelector<HTMLImageElement>("[data-index-preview]");
+            if (!preview) continue;
+            preview.classList.remove("hidden");
+            for (const row of list.querySelectorAll<HTMLElement>("li[data-preview]")) {
+                row.addEventListener("pointerenter", () => {
+                    preview.src = row.dataset.preview ?? "";
+                    preview.classList.add("is-active");
+                });
+                row.addEventListener("pointerleave", () => preview.classList.remove("is-active"));
+                row.addEventListener("pointermove", (event) => {
+                    preview.style.transform = `translate(${event.clientX + 24}px, ${event.clientY - 90}px)`;
+                });
+            }
+        }
+    }
+</script>

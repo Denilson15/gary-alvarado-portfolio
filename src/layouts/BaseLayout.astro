@@ -1,6 +1,10 @@
 ---
 import "@fontsource-variable/inter";
-import "@fontsource-variable/fraunces";
+import "@fontsource-variable/inter-tight";
+import "@fontsource-variable/fraunces/wght-italic.css";
+import "@fontsource-variable/jetbrains-mono";
+import interTightLatin from "@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2?url";
+import interLatin from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
 import "@/styles/global.css";
 
 import { htmlLang, languages, ogLocale, type Lang } from "@/i18n/config";
@@ -35,10 +39,12 @@ const ogImageUrl = new URL(`/og-${lang}.jpg`, site).href;
 ---
 
 <!doctype html>
-<html lang={htmlLang[lang]} data-theme="light">
+<html lang={htmlLang[lang]} data-theme="dark">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preload" href={interTightLatin} as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
         <title>{fullTitle}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />
@@ -49,8 +55,7 @@ const ogImageUrl = new URL(`/og-${lang}.jpg`, site).href;
         {noindex && <meta name="robots" content="noindex" />}
 
         <meta name="color-scheme" content="light dark" />
-        <meta name="theme-color" content="#f8f6f1" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#0e1113" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#0a0c0e" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="sitemap" href="/sitemap-index.xml" />
 
@@ -71,7 +76,7 @@ const ogImageUrl = new URL(`/og-${lang}.jpg`, site).href;
         <meta name="twitter:image" content={ogImageUrl} />
 
         <script is:inline>
-            // Apply the saved or system theme before first paint to avoid a flash.
+            // Apply the saved theme before first paint. The site opens dark unless the visitor chose light.
             (function () {
                 var root = document.documentElement;
                 root.classList.add("js");
@@ -79,10 +84,7 @@ const ogImageUrl = new URL(`/og-${lang}.jpg`, site).href;
                 try {
                     saved = localStorage.getItem("theme");
                 } catch (e) {}
-                var dark = saved
-                    ? saved === "dark"
-                    : window.matchMedia("(prefers-color-scheme: dark)").matches;
-                root.dataset.theme = dark ? "dark" : "light";
+                root.dataset.theme = saved === "light" ? "light" : "dark";
             })();
         </script>
         <slot name="head" />

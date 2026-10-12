@@ -18,17 +18,6 @@ export default function ThemeToggle({ toLightLabel, toDarkLabel }: Props) {
 
     useEffect(() => {
         setTheme(readTheme());
-
-        // Follow the system setting until the visitor picks a theme themselves.
-        const media = window.matchMedia("(prefers-color-scheme: dark)");
-        const onChange = (event: MediaQueryListEvent) => {
-            if (localStorage.getItem(STORAGE_KEY)) return;
-            const next: Theme = event.matches ? "dark" : "light";
-            document.documentElement.dataset.theme = next;
-            setTheme(next);
-        };
-        media.addEventListener("change", onChange);
-        return () => media.removeEventListener("change", onChange);
     }, []);
 
     function toggle() {

@@ -1,0 +1,70 @@
+---
+import CvBackdrop from "./CvBackdrop.astro";
+
+/**
+ * Dark, full-bleed opening band used at the top of every page.
+ * "full" is the home page hero; "page" is a shorter header for inner pages.
+ * The band slides under the transparent sticky header (-mt-16 / pt-16).
+ */
+interface Props {
+    size?: "full" | "page";
+    eyebrow?: string;
+    title: string;
+    /** Optional italic serif phrase set on its own line after the title. */
+    accent?: string;
+    lead?: string;
+}
+
+const { size = "page", eyebrow, title, accent, lead } = Astro.props;
+const isFull = size === "full";
+---
+
+<section
+    class:list={[
+        "surface-dark relative isolate -mt-16 flex overflow-hidden bg-bg pt-16",
+        isFull ? "min-h-[88svh] items-end" : "min-h-[46svh] items-end",
+    ]}
+>
+    <div
+        class="absolute inset-0 -z-10 bg-[radial-gradient(120%_80%_at_80%_10%,rgba(79,209,193,0.14),transparent_60%),radial-gradient(90%_70%_at_0%_100%,rgba(79,209,193,0.08),transparent_60%)]"
+        aria-hidden="true"
+    ></div>
+    <div class="absolute inset-0 -z-10">
+        <CvBackdrop density={isFull ? 7 : 5} />
+    </div>
+    <div
+        class="absolute inset-0 -z-10 bg-[linear-gradient(90deg,var(--bg)_0%,color-mix(in_srgb,var(--bg)_75%,transparent)_45%,transparent_80%),linear-gradient(0deg,var(--bg)_0%,transparent_45%)]"
+        aria-hidden="true"
+    ></div>
+
+    <div
+        class:list={[
+            "container-page hero-rise",
+            isFull ? "pt-24 pb-16 sm:pb-20 lg:pb-24" : "pt-16 pb-12 sm:pb-16",
+        ]}
+    >
+        {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+        <h1
+            class:list={[
+                "mt-5 max-w-5xl leading-[0.95] text-ink",
+                isFull ? "text-5xl sm:text-7xl lg:text-8xl" : "text-4xl sm:text-6xl lg:text-7xl",
+            ]}
+        >
+            {title}
+            {accent && (
+                <span
+                    class:list={[
+                        "accent-serif mt-2 block text-accent",
+                        isFull ? "text-4xl sm:text-6xl lg:text-7xl" : "text-3xl sm:text-5xl",
+                    ]}
+                >
+                    {accent}
+                </span>
+            )}
+        </h1>
+        {lead && (
+            <p class="mt-7 max-w-2xl text-lg leading-relaxed text-ink-muted sm:text-xl">{lead}</p>
+        )}
+        <slot />
+    </div>
+</section>

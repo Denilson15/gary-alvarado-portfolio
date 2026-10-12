@@ -23,6 +23,8 @@ const projects = defineCollection({
             tags: z.array(z.string()).min(1),
             /** live: deployed and usable · client: built for a client · code: repo only · in-progress */
             category: z.enum(["live", "client", "code", "in-progress"]),
+            /** Year shown in the project index, e.g. 2026. */
+            year: z.number().int().optional(),
             liveUrl: z.url().optional(),
             repoUrl: z.url().optional(),
             /** Screenshot next to this file's image folder, e.g. "../../assets/projects/name.png". */

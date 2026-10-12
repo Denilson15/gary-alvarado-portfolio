@@ -68,12 +68,11 @@
     },
     "home": {
         "eyebrow": "Maestría en Ciencias de la Computación · UC Davis",
-        "titleLead": "Hola, soy Gary.",
-        "title": "Desarrollo software que ayuda a las personas a aprender y a cuidar su salud.",
+        "heroTitle": "Desarrollo software que ayuda a las personas",
+        "heroAccent": "a aprender y a cuidar su salud.",
         "lead": "Soy estudiante de posgrado y trabajo donde la IA, la visión por computadora y la robótica se cruzan con la interacción humano-computadora. Antes de la maestría di clases de computación en preparatoria, y esa experiencia sigue guiando lo que construyo: herramientas claras y accesibles para personas reales.",
         "ctaWork": "Ver mis proyectos",
         "ctaHire": "Trabajemos juntos",
-        "photoAlt": "Retrato de Gary Alvarado con traje oscuro, frente a un árbol de hojas verdes",
         "location": "Área de la Bahía de San Francisco y Davis, California",
         "interestsLabel": "Áreas de interés",
         "selectedTitle": "Proyectos destacados",
@@ -88,7 +87,26 @@
         ],
         "servicesTitle": "¿Necesita un sitio web?",
         "servicesBody": "También diseño sitios web rápidos, accesibles y bilingües para pequeños negocios y particulares.",
-        "servicesCta": "Ver servicios web"
+        "servicesCta": "Ver servicios web",
+        "statsLabel": "En cifras",
+        "stats": [
+            {
+                "value": "130+",
+                "label": "alumnos de AP Computer Science Principles y programación"
+            },
+            {
+                "value": "5",
+                "label": "grupos a mi cargo como maestro suplente de largo plazo"
+            },
+            {
+                "value": "70+",
+                "label": "proyectos de alumnos en la galería que creé"
+            },
+            {
+                "value": "2",
+                "label": "sitios web entregados a clientes"
+            }
+        ]
     },
     "interests": {
         "softwareEngineering": "Ingeniería de software",
@@ -102,7 +120,8 @@
     "projects": {
         "eyebrow": "Trabajo",
         "title": "Proyectos",
-        "lead": "Lo que he creado para estudiantes, clientes y cursos. Primero aparecen los proyectos en línea, para que pueda probarlos antes de revisar el código.",
+        "titleAccent": "para estudiantes, clientes y cursos.",
+        "lead": "Primero aparecen los proyectos en línea, para que pueda probarlos antes de revisar el código.",
         "sections": {
             "live": "Proyectos en línea",
             "liveLead": "Se abren en el navegador, sin instalar nada.",
@@ -111,7 +130,9 @@
             "code": "Código y trabajos académicos",
             "codeLead": "Proyectos que se ejecutan localmente o que muestran mi trabajo en un lenguaje específico.",
             "inProgress": "En desarrollo",
-            "inProgressLead": "En lo que estoy trabajando ahora."
+            "inProgressLead": "En lo que estoy trabajando ahora.",
+            "more": "Más proyectos",
+            "moreLead": "Trabajos académicos, juegos y proyectos en desarrollo."
         },
         "problem": "Problema",
         "solution": "Solución",
@@ -130,8 +151,8 @@
     },
     "about": {
         "eyebrow": "Sobre mí",
-        "title": "De los negocios a la computación, pasando por un salón de clases.",
-        "photoAlt": "Retrato de Gary Alvarado",
+        "title": "De los negocios a la computación,",
+        "titleAccent": "pasando por un salón de clases.",
         "intro": [
             "Soy Gary Alvarado y estudio la maestría en Ciencias de la Computación en UC Davis. Empecé en otoño de 2026 y espero graduarme en junio de 2028. Divido mi tiempo entre Davis y el Área de la Bahía.",
             "Mi licenciatura es en Administración de Empresas, por Cal State East Bay. Llegué a la tecnología a través de cursos avanzados de computación en esa misma universidad y descubrí que lo que más disfruto es crear cosas que la gente realmente usa, sobre todo en educación y salud."
@@ -224,7 +245,8 @@
     },
     "services": {
         "eyebrow": "Servicios web",
-        "title": "Sitios web para pequeños negocios y particulares.",
+        "title": "Sitios web para pequeños negocios",
+        "titleAccent": "y particulares.",
         "lead": "Diseño sitios web rápidos y accesibles que se ven bien en cualquier celular, en inglés, en español o en ambos idiomas. Usted recibe un sitio fácil de actualizar y que le pertenece por completo.",
         "ctaQuote": "Solicitar cotización",
         "ctaWork": "Ver trabajos para clientes",

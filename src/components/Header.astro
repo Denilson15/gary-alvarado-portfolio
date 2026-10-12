@@ -21,7 +21,10 @@ const links = navRoutes.map((id) => ({
 }));
 ---
 
-<header class="sticky top-0 z-40 border-b border-line/70 bg-bg/85 backdrop-blur-md">
+<header
+    class="site-header surface-dark is-over-hero sticky top-0 z-40 border-b border-line/70 bg-bg/85 backdrop-blur-md"
+    data-site-header
+>
     <div class="container-page relative flex h-16 items-center justify-between gap-4">
         <a
             href={getPath("home", lang)}
@@ -65,3 +68,18 @@ const links = navRoutes.map((id) => ({
         </div>
     </div>
 </header>
+
+<script>
+    // Every page opens with a dark hero band. While the header sits over it, the header is
+    // transparent and uses light text; once the page scrolls, it switches to the page theme.
+    const header = document.querySelector<HTMLElement>("[data-site-header]");
+    if (header) {
+        const update = () => {
+            const over = window.scrollY < 40;
+            header.classList.toggle("is-over-hero", over);
+            header.classList.toggle("surface-dark", over);
+        };
+        update();
+        window.addEventListener("scroll", update, { passive: true });
+    }
+</script>

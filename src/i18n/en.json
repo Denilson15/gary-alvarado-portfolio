@@ -68,12 +68,11 @@
     },
     "home": {
         "eyebrow": "MS Computer Science · UC Davis",
-        "titleLead": "Hi, I'm Gary.",
-        "title": "I build software that helps people learn and stay healthy.",
+        "heroTitle": "I build software that helps people",
+        "heroAccent": "learn and stay healthy.",
         "lead": "I'm a graduate student working where AI, computer vision, and robotics meet human-computer interaction. Before grad school I taught computer science to high school students, and that classroom still shapes how I build: clear, approachable tools for real people.",
         "ctaWork": "View my work",
         "ctaHire": "Hire me",
-        "photoAlt": "Portrait of Gary Alvarado wearing a dark suit, standing in front of green leaves",
         "location": "San Francisco Bay Area & Davis, CA",
         "interestsLabel": "Focus areas",
         "selectedTitle": "Selected work",
@@ -88,7 +87,26 @@
         ],
         "servicesTitle": "Need a website?",
         "servicesBody": "I also build fast, accessible, bilingual websites for small businesses and individuals.",
-        "servicesCta": "See web services"
+        "servicesCta": "See web services",
+        "statsLabel": "By the numbers",
+        "stats": [
+            {
+                "value": "130+",
+                "label": "students taught in AP CS Principles and programming"
+            },
+            {
+                "value": "5",
+                "label": "class sections led as a long-term substitute"
+            },
+            {
+                "value": "70+",
+                "label": "student projects in the showcase I built"
+            },
+            {
+                "value": "2",
+                "label": "client websites shipped"
+            }
+        ]
     },
     "interests": {
         "softwareEngineering": "Software engineering",
@@ -102,7 +120,8 @@
     "projects": {
         "eyebrow": "Work",
         "title": "Projects",
-        "lead": "Things I've built for students, clients, and classes. Live projects come first, so you can try them before reading the code.",
+        "titleAccent": "for students, clients, and classes.",
+        "lead": "Live projects come first, so you can try them before reading the code.",
         "sections": {
             "live": "Live projects",
             "liveLead": "Open them in your browser, no install needed.",
@@ -111,7 +130,9 @@
             "code": "Code & coursework",
             "codeLead": "Projects that run locally or show my work in a specific language.",
             "inProgress": "In progress",
-            "inProgressLead": "What I'm building right now."
+            "inProgressLead": "What I'm building right now.",
+            "more": "More work",
+            "moreLead": "Coursework, games, and projects still in progress."
         },
         "problem": "Problem",
         "solution": "Solution",
@@ -130,8 +151,8 @@
     },
     "about": {
         "eyebrow": "About",
-        "title": "From business to computer science, by way of a classroom.",
-        "photoAlt": "Portrait of Gary Alvarado",
+        "title": "From business to computer science,",
+        "titleAccent": "by way of a classroom.",
         "intro": [
             "I'm Gary Alvarado, a Master's student in Computer Science at UC Davis. I started in Fall 2026 and expect to graduate in June 2028. I split my time between Davis and the Bay Area.",
             "My bachelor's degree is in Business Administration from Cal State East Bay. I moved into tech through upper-division computer science coursework there, and found that what I enjoy most is building things people actually use, especially in education and health."
@@ -224,7 +245,8 @@
     },
     "services": {
         "eyebrow": "Web services",
-        "title": "Websites for small businesses and individuals.",
+        "title": "Websites for small businesses",
+        "titleAccent": "and individuals.",
         "lead": "I build fast, accessible websites that look good on every phone, in English, Spanish, or both. You get a site that's easy to update and fully yours.",
         "ctaQuote": "Request a quote",
         "ctaWork": "See client work",

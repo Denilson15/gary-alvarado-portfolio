@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+/* `dark:` utilities apply in dark mode and inside always-dark bands such as the hero. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, .surface-dark, .surface-dark *));
 
 /*
  * Color tokens. Every pair used for text meets WCAG AA (4.5:1) against its background
@@ -8,12 +9,12 @@
  */
 :root {
     color-scheme: light;
-    --bg: #f8f6f1;
+    --bg: #f7f6f3;
     --surface: #ffffff;
-    --surface-muted: #efece5;
-    --ink: #15181c;
-    --ink-muted: #4a5059;
-    --line: #dedad1;
+    --surface-muted: #eeece7;
+    --ink: #0f1214;
+    --ink-muted: #4b525a;
+    --line: #dddad3;
     --accent: #0d6e66;
     --accent-ink: #ffffff;
     --accent-soft: #d8ede9;
@@ -24,22 +25,28 @@
     --focus: #0d6e66;
 }
 
-[data-theme="dark"] {
+/* Dark theme, and bands that stay dark in both themes (hero, page headers). */
+[data-theme="dark"],
+.surface-dark {
     color-scheme: dark;
-    --bg: #0e1113;
-    --surface: #161a1e;
-    --surface-muted: #1d2226;
-    --ink: #eceae5;
-    --ink-muted: #a6adb5;
-    --line: #2a3035;
+    --bg: #0a0c0e;
+    --surface: #111417;
+    --surface-muted: #171b1f;
+    --ink: #eef0ee;
+    --ink-muted: #a3aab2;
+    --line: #242a2f;
     --accent: #4fd1c1;
-    --accent-ink: #062320;
-    --accent-soft: #123532;
+    --accent-ink: #04201d;
+    --accent-soft: #0f2e2b;
     --accent-strong: #8ae6da;
     --warn-bg: #2e2510;
     --warn-ink: #f3d68a;
     --warn-line: #6b5520;
     --focus: #8ae6da;
+}
+
+.surface-dark {
+    color: var(--ink);
 }
 
 @theme inline {
@@ -60,7 +67,9 @@
 
 @theme {
     --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
-    --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
+    --font-display: "Inter Tight Variable", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+    --font-serif: "Fraunces Variable", ui-serif, Georgia, serif;
+    --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, monospace;
     --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -80,8 +89,7 @@
     h1,
     h2,
     h3 {
-        @apply font-display text-balance;
-        font-optical-sizing: auto;
+        @apply font-display font-bold tracking-[-0.03em] text-balance;
     }
 
     p {
@@ -112,12 +120,38 @@
     }
 
     .eyebrow {
-        @apply text-sm font-semibold tracking-[0.12em] text-accent uppercase;
+        @apply font-mono text-xs font-medium tracking-[0.18em] text-accent uppercase sm:text-sm;
+    }
+
+    /* Italic serif used for one accent phrase per heading. */
+    .accent-serif {
+        @apply font-serif font-normal tracking-[-0.01em] italic;
     }
 
     .link {
         @apply font-medium text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent;
     }
+
+    /* Section heading with a mono index, e.g. "01 / Selected work". */
+    .section-label {
+        @apply font-mono text-xs tracking-[0.18em] text-ink-muted uppercase;
+    }
+}
+
+/*
+ * Header: transparent with light text while it sits over a dark hero band,
+ * solid once the page scrolls (see the script in Header.astro).
+ */
+.site-header {
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.site-header.is-over-hero {
+    background-color: transparent;
+    border-color: transparent;
+    backdrop-filter: none;
 }
 
 /*
@@ -127,15 +161,54 @@
 @media (prefers-reduced-motion: no-preference) {
     .js [data-reveal] {
         opacity: 0;
-        transform: translateY(16px);
+        transform: translateY(18px);
         transition:
-            opacity 0.7s var(--ease-out-soft),
-            transform 0.7s var(--ease-out-soft);
+            opacity 0.8s var(--ease-out-soft),
+            transform 0.8s var(--ease-out-soft);
         transition-delay: var(--reveal-delay, 0ms);
     }
 
     .js [data-reveal].is-visible {
         opacity: 1;
         transform: none;
+    }
+
+    /* Hero text rises in on load. */
+    .hero-rise > * {
+        animation: hero-rise 0.9s var(--ease-out-soft) both;
+    }
+
+    /* The headline is usually the largest paint, so it only slides, never fades. */
+    .hero-rise > h1 {
+        animation-name: hero-slide;
+    }
+
+    .hero-rise > *:nth-child(2) {
+        animation-delay: 80ms;
+    }
+
+    .hero-rise > *:nth-child(3) {
+        animation-delay: 160ms;
+    }
+
+    .hero-rise > *:nth-child(4) {
+        animation-delay: 240ms;
+    }
+
+    .hero-rise > *:nth-child(5) {
+        animation-delay: 320ms;
+    }
+}
+
+@keyframes hero-slide {
+    from {
+        transform: translateY(24px);
+    }
+}
+
+@keyframes hero-rise {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
     }
 }

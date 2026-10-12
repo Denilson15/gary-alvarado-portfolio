@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import type { Lang } from "@/i18n/config";
 import { getPath } from "@/i18n/routes";
 import { getDictionary, useTranslations } from "@/i18n/utils";
@@ -7,11 +6,11 @@ import { interests } from "@/data/site";
 import { getFeaturedProjects } from "@/lib/projects";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Button from "@/components/Button.astro";
+import CaseStudyRow from "@/components/CaseStudyRow.astro";
+import HeroSection from "@/components/HeroSection.astro";
 import Icon from "@/components/Icon.astro";
-import ProjectCard from "@/components/ProjectCard.astro";
-import SectionHeading from "@/components/SectionHeading.astro";
-import TagList from "@/components/TagList.astro";
-import portrait from "@/assets/gary-alvarado.jpg";
+import Marquee from "@/components/Marquee.astro";
+import StatRow from "@/components/StatRow.astro";
 
 interface Props {
     lang: Lang;
@@ -24,87 +23,74 @@ const featured = (await getFeaturedProjects()).slice(0, 3);
 ---
 
 <BaseLayout lang={lang} routeId="home" description={t("meta.home.description")}>
-    <section class="container-page grid items-center gap-12 overflow-x-clip pt-12 pb-20 sm:pt-16 md:grid-cols-[1.35fr_1fr] lg:gap-20 lg:pt-24">
-        <div>
-            <p class="eyebrow">{t("home.eyebrow")}</p>
-            <h1 class="mt-5 text-4xl leading-[1.08] font-medium tracking-tight sm:text-5xl lg:text-6xl">
-                <span class="block text-accent italic">{t("home.titleLead")}</span>
-                {t("home.title")}
-            </h1>
-            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted">{t("home.lead")}</p>
-            <div class="mt-8 flex flex-wrap gap-3">
-                <Button href={getPath("projects", lang)}>
-                    {t("home.ctaWork")}
-                    <Icon name="arrow-right" class="size-4" />
-                </Button>
-                <Button href={getPath("services", lang)} variant="secondary">
-                    {t("home.ctaHire")}
-                </Button>
+    <HeroSection
+        size="full"
+        eyebrow={t("home.eyebrow")}
+        title={t("home.heroTitle")}
+        accent={t("home.heroAccent")}
+        lead={t("home.lead")}
+    >
+        <div class="mt-9 flex flex-wrap items-center gap-3">
+            <Button href={getPath("projects", lang)}>
+                {t("home.ctaWork")}
+                <Icon name="arrow-right" class="size-4" />
+            </Button>
+            <Button href={getPath("services", lang)} variant="secondary">
+                {t("home.ctaHire")}
+            </Button>
+        </div>
+        <p class="mt-10 flex items-center gap-2 font-mono text-xs tracking-[0.14em] text-ink-muted uppercase">
+            <Icon name="map-pin" class="size-4 text-accent" />
+            {t("home.location")}
+        </p>
+    </HeroSection>
+
+    <Marquee
+        items={interests.map((key) => t(`interests.${key}`))}
+        label={t("home.interestsLabel")}
+    />
+
+    <section class="container-page pt-24 sm:pt-32" aria-labelledby="selected-heading">
+        <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end" data-reveal>
+            <div class="max-w-2xl">
+                <p class="section-label">01 / {t("home.selectedTitle")}</p>
+                <h2 id="selected-heading" class="mt-4 text-4xl sm:text-5xl">
+                    {t("home.selectedTitle")}
+                </h2>
+                <p class="mt-4 text-lg leading-relaxed text-ink-muted">{t("home.selectedLead")}</p>
             </div>
-            <p class="mt-8 flex items-center gap-2 text-sm text-ink-muted">
-                <Icon name="map-pin" class="size-4 text-accent" />
-                {t("home.location")}
-            </p>
-        </div>
-
-        <div class="relative mx-auto w-full max-w-sm p-3 md:max-w-none">
-            <div
-                class="absolute -inset-3 -z-10 rotate-3 rounded-[2.5rem] bg-accent-soft"
-                aria-hidden="true"
-            ></div>
-            <Image
-                src={portrait}
-                alt={t("home.photoAlt")}
-                widths={[360, 560, 800]}
-                sizes="(min-width: 768px) 40vw, 90vw"
-                loading="eager"
-                fetchpriority="high"
-                class="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-xl shadow-black/10"
-            />
-        </div>
-    </section>
-
-    <section class="container-page" aria-labelledby="interests-heading">
-        <div
-            class="flex flex-col gap-4 border-y border-line py-6 sm:flex-row sm:items-center sm:gap-6"
-            data-reveal
-        >
-            <h2 id="interests-heading" class="shrink-0 font-sans text-sm font-semibold text-ink">
-                {t("home.interestsLabel")}
-            </h2>
-            <TagList tags={interests.map((key) => t(`interests.${key}`))} size="md" />
-        </div>
-    </section>
-
-    <section class="container-page pt-24" aria-labelledby="selected-heading">
-        <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <SectionHeading
-                id="selected-heading"
-                title={t("home.selectedTitle")}
-                lead={t("home.selectedLead")}
-            />
             <a
                 href={getPath("projects", lang)}
                 class="link inline-flex shrink-0 items-center gap-1.5"
-                data-reveal
             >
                 {t("home.viewAllProjects")}
                 <Icon name="arrow-right" class="size-4" />
             </a>
         </div>
-        <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {featured.map((project) => (
-                <ProjectCard project={project} lang={lang} details={false} />
+        <div class="mt-10">
+            {featured.map((project, index) => (
+                <CaseStudyRow
+                    project={project}
+                    lang={lang}
+                    number={index + 1}
+                    reverse={index % 2 === 1}
+                    details={false}
+                />
             ))}
         </div>
     </section>
 
+    <div class="container-page pt-8">
+        <StatRow stats={dict.home.stats} label={t("home.statsLabel")} />
+    </div>
+
     <section class="container-page grid gap-6 pt-24 lg:grid-cols-[1.4fr_1fr]">
-        <div class="rounded-3xl border border-line bg-surface p-7 sm:p-9" data-reveal>
-            <h2 class="text-2xl font-medium tracking-tight">{t("home.currentlyTitle")}</h2>
-            <ul class="mt-6 space-y-4">
+        <div class="border-t border-line pt-8" data-reveal>
+            <p class="section-label">02 / {t("home.currentlyTitle")}</p>
+            <h2 class="mt-4 text-3xl sm:text-4xl">{t("home.currentlyTitle")}</h2>
+            <ul class="mt-8 divide-y divide-line">
                 {dict.home.currently.map((item) => (
-                    <li class="flex gap-3 leading-relaxed text-ink-muted">
+                    <li class="flex gap-4 py-4 leading-relaxed text-ink-muted">
                         <span
                             class="mt-2.5 size-1.5 shrink-0 rounded-full bg-accent"
                             aria-hidden="true"
@@ -115,13 +101,18 @@ const featured = (await getFeaturedProjects()).slice(0, 3);
             </ul>
         </div>
         <div
-            class="flex flex-col justify-between gap-8 rounded-3xl bg-accent-soft p-7 sm:p-9"
+            class="surface-dark relative isolate flex flex-col justify-between gap-10 overflow-hidden rounded-3xl bg-bg p-8 sm:p-10"
             data-reveal
             style="--reveal-delay: 120ms"
         >
+            <div
+                class="absolute inset-0 -z-10 bg-[radial-gradient(90%_90%_at_100%_0%,rgba(79,209,193,0.22),transparent_60%)]"
+                aria-hidden="true"
+            ></div>
             <div>
-                <h2 class="text-2xl font-medium tracking-tight">{t("home.servicesTitle")}</h2>
-                <p class="mt-3 leading-relaxed text-ink">{t("home.servicesBody")}</p>
+                <p class="section-label">03 / {t("nav.services")}</p>
+                <h2 class="mt-4 text-3xl sm:text-4xl">{t("home.servicesTitle")}</h2>
+                <p class="mt-4 leading-relaxed text-ink-muted">{t("home.servicesBody")}</p>
             </div>
             <Button href={getPath("services", lang)} class="self-start">
                 {t("home.servicesCta")}

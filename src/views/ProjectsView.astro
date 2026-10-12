@@ -5,9 +5,10 @@ import { site } from "@/data/site";
 import { getProjectsByCategory } from "@/lib/projects";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Button from "@/components/Button.astro";
+import CaseStudyRow from "@/components/CaseStudyRow.astro";
+import HeroSection from "@/components/HeroSection.astro";
 import Icon from "@/components/Icon.astro";
-import ProjectCard from "@/components/ProjectCard.astro";
-import SectionHeading from "@/components/SectionHeading.astro";
+import ProjectIndex from "@/components/ProjectIndex.astro";
 
 interface Props {
     lang: Lang;
@@ -22,14 +23,7 @@ const [live, client, code, inProgress] = await Promise.all([
     getProjectsByCategory("code"),
     getProjectsByCategory("in-progress"),
 ]);
-
-/** The first card spans the full row, and so does a last card that would sit alone. */
-function isWide(index: number, count: number): boolean {
-    return index === 0 || (index === count - 1 && (count - 1) % 2 === 1);
-}
-
-const sectionTitle = "text-2xl font-medium tracking-tight sm:text-3xl";
-const sectionLead = "mt-2 text-ink-muted";
+const more = [...inProgress, ...code];
 ---
 
 <BaseLayout
@@ -38,27 +32,29 @@ const sectionLead = "mt-2 text-ink-muted";
     title={t("meta.projects.title")}
     description={t("meta.projects.description")}
 >
-    <div class="container-page pt-12 sm:pt-16 lg:pt-24">
-        <SectionHeading
-            level={1}
-            eyebrow={t("projects.eyebrow")}
-            title={t("projects.title")}
-            lead={t("projects.lead")}
-        />
-    </div>
+    <HeroSection
+        eyebrow={t("projects.eyebrow")}
+        title={t("projects.title")}
+        accent={t("projects.titleAccent")}
+        lead={t("projects.lead")}
+    />
 
     {live.length > 0 && (
-        <section class="container-page pt-16" aria-labelledby="live-heading">
-            <h2 id="live-heading" class={sectionTitle}>
-                {t("projects.sections.live")}
-            </h2>
-            <p class={sectionLead}>{t("projects.sections.liveLead")}</p>
-            <div class="mt-8 grid gap-6 lg:grid-cols-2">
+        <section class="container-page pt-20" aria-labelledby="live-heading">
+            <div class="max-w-2xl" data-reveal>
+                <p class="section-label">01 / {t("projects.sections.live")}</p>
+                <h2 id="live-heading" class="mt-4 text-4xl sm:text-5xl">
+                    {t("projects.sections.live")}
+                </h2>
+                <p class="mt-4 text-lg text-ink-muted">{t("projects.sections.liveLead")}</p>
+            </div>
+            <div class="mt-6">
                 {live.map((project, index) => (
-                    <ProjectCard
+                    <CaseStudyRow
                         project={project}
                         lang={lang}
-                        variant={isWide(index, live.length) ? "wide" : "standard"}
+                        number={index + 1}
+                        reverse={index % 2 === 1}
                         eager={index === 0}
                     />
                 ))}
@@ -67,54 +63,49 @@ const sectionLead = "mt-2 text-ink-muted";
     )}
 
     {client.length > 0 && (
-        <section class="container-page pt-20" aria-labelledby="client-heading">
-            <h2 id="client-heading" class={sectionTitle}>
-                {t("projects.sections.client")}
-            </h2>
-            <p class={sectionLead}>{t("projects.sections.clientLead")}</p>
-            <div class="mt-8 grid gap-6 lg:grid-cols-2">
-                {client.map((project) => (
-                    <ProjectCard project={project} lang={lang} />
+        <section class="container-page pt-16" aria-labelledby="client-heading">
+            <div class="max-w-2xl" data-reveal>
+                <p class="section-label">02 / {t("projects.sections.client")}</p>
+                <h2 id="client-heading" class="mt-4 text-4xl sm:text-5xl">
+                    {t("projects.sections.client")}
+                </h2>
+                <p class="mt-4 text-lg text-ink-muted">{t("projects.sections.clientLead")}</p>
+            </div>
+            <div class="mt-6">
+                {client.map((project, index) => (
+                    <CaseStudyRow
+                        project={project}
+                        lang={lang}
+                        number={live.length + index + 1}
+                        reverse={(live.length + index) % 2 === 1}
+                    />
                 ))}
             </div>
         </section>
     )}
 
-    {code.length > 0 && (
-        <section class="container-page pt-20" aria-labelledby="code-heading">
-            <h2 id="code-heading" class={sectionTitle}>
-                {t("projects.sections.code")}
-            </h2>
-            <p class={sectionLead}>{t("projects.sections.codeLead")}</p>
-            <div class="mt-8 grid gap-6 md:grid-cols-2">
-                {code.map((project) => (
-                    <ProjectCard project={project} lang={lang} variant="compact" details />
-                ))}
+    {more.length > 0 && (
+        <section class="container-page pt-16" aria-labelledby="more-work-heading">
+            <div class="max-w-2xl" data-reveal>
+                <p class="section-label">03 / {t("projects.sections.more")}</p>
+                <h2 id="more-work-heading" class="mt-4 text-4xl sm:text-5xl">
+                    {t("projects.sections.more")}
+                </h2>
+                <p class="mt-4 text-lg text-ink-muted">{t("projects.sections.moreLead")}</p>
+            </div>
+            <div class="mt-10">
+                <ProjectIndex projects={more} lang={lang} start={live.length + client.length + 1} />
             </div>
         </section>
     )}
 
-    {inProgress.length > 0 && (
-        <section class="container-page pt-20" aria-labelledby="progress-heading">
-            <h2 id="progress-heading" class={sectionTitle}>
-                {t("projects.sections.inProgress")}
-            </h2>
-            <p class={sectionLead}>{t("projects.sections.inProgressLead")}</p>
-            <div class="mt-8 grid gap-6 lg:grid-cols-2">
-                {inProgress.map((project) => (
-                    <ProjectCard project={project} lang={lang} variant="wide" />
-                ))}
-            </div>
-        </section>
-    )}
-
-    <section class="container-page pt-20" aria-labelledby="more-heading">
+    <section class="container-page pt-20" aria-labelledby="github-heading">
         <div
-            class="flex flex-col items-start justify-between gap-6 rounded-3xl border border-dashed border-line p-7 sm:flex-row sm:items-center sm:p-9"
+            class="flex flex-col items-start justify-between gap-6 border-y border-line py-10 sm:flex-row sm:items-center"
             data-reveal
         >
             <div>
-                <h2 id="more-heading" class="text-2xl font-medium tracking-tight">
+                <h2 id="github-heading" class="text-3xl">
                     {t("projects.moreTitle")}
                 </h2>
                 <p class="mt-2 max-w-xl text-ink-muted">{t("projects.moreBody")}</p>

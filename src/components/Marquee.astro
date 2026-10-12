@@ -1,0 +1,79 @@
+---
+/**
+ * Slow, looping ticker of short phrases. Pauses on hover and focus, and becomes a
+ * static wrapped list when the visitor prefers reduced motion.
+ * Screen readers get the list once; the visual duplicate is hidden from them.
+ */
+interface Props {
+    items: readonly string[];
+    label: string;
+}
+
+const { items, label } = Astro.props;
+---
+
+<div
+    class="marquee relative overflow-hidden border-y border-line py-5"
+    role="group"
+    aria-label={label}
+>
+    <div class="marquee-track flex w-max">
+        {[false, true].map((duplicate) => (
+            <ul
+                class="marquee-list flex shrink-0 items-center"
+                aria-hidden={duplicate ? "true" : undefined}
+            >
+                {items.map((item) => (
+                    <li class="flex items-center font-display text-2xl font-semibold tracking-tight whitespace-nowrap text-ink sm:text-3xl">
+                        <span class="px-6 sm:px-8">{item}</span>
+                        <span class="text-accent" aria-hidden="true">
+                            ✦
+                        </span>
+                    </li>
+                ))}
+            </ul>
+        ))}
+    </div>
+</div>
+
+<style>
+    .marquee {
+        mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .marquee-track {
+            animation: marquee 48s linear infinite;
+        }
+
+        .marquee:hover .marquee-track,
+        .marquee:focus-within .marquee-track {
+            animation-play-state: paused;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .marquee {
+            mask-image: none;
+        }
+
+        .marquee-track {
+            width: auto;
+        }
+
+        .marquee-list {
+            flex-wrap: wrap;
+            row-gap: 0.75rem;
+        }
+
+        .marquee-list[aria-hidden] {
+            display: none;
+        }
+    }
+
+    @keyframes marquee {
+        to {
+            transform: translateX(-50%);
+        }
+    }
+</style>

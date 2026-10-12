@@ -4,6 +4,7 @@ import { getPath } from "@/i18n/routes";
 import { useTranslations } from "@/i18n/utils";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Button from "@/components/Button.astro";
+import HeroSection from "@/components/HeroSection.astro";
 
 /** Simple centered message page, used for the form thank-you page and 404. */
 interface Props {
@@ -22,14 +23,13 @@ const t = useTranslations(lang);
     description={t(`meta.${kind}.description`)}
     noindex
 >
-    <section class="container-page flex flex-col items-start py-24 sm:py-32">
-        {kind === "notFound" && <p class="eyebrow">{t("notFound.eyebrow")}</p>}
-        <h1 class="mt-4 max-w-3xl text-4xl font-medium tracking-tight sm:text-5xl">
-            {t(`${kind}.title`)}
-        </h1>
-        <p class="mt-5 max-w-xl text-lg leading-relaxed text-ink-muted">{t(`${kind}.body`)}</p>
-        <Button href={getPath("home", lang)} class="mt-8">
+    <HeroSection
+        eyebrow={kind === "notFound" ? t("notFound.eyebrow") : undefined}
+        title={t(`${kind}.title`)}
+        lead={t(`${kind}.body`)}
+    >
+        <Button href={getPath("home", lang)} class="mt-9">
             {t(`${kind}.cta`)}
         </Button>
-    </section>
+    </HeroSection>
 </BaseLayout>

@@ -1,0 +1,201 @@
+---
+/**
+ * Decorative animated backdrop: drifting points linked to their neighbors, with a few
+ * tracking boxes, like keypoints in a computer-vision view. Canvas only, no libraries.
+ * It pauses when off-screen or in a hidden tab, and draws a single frame when the
+ * visitor prefers reduced motion.
+ */
+interface Props {
+    /** Points per 100,000 px² of canvas area. */
+    density?: number;
+}
+
+const { density = 5 } = Astro.props;
+---
+
+<canvas
+    class="pointer-events-none absolute inset-0 h-full w-full"
+    data-cv-backdrop
+    data-density={density}
+    aria-hidden="true"
+></canvas>
+
+<script>
+    interface Point {
+        x: number;
+        y: number;
+        vx: number;
+        vy: number;
+        r: number;
+    }
+
+    interface Tracker {
+        target: number;
+        size: number;
+        label: string;
+    }
+
+    const LINK_DISTANCE = 130;
+    const ACCENT = "79, 209, 193";
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    function setup(canvas: HTMLCanvasElement) {
+        const context = canvas.getContext("2d");
+        if (!context) return;
+        const ctx = context;
+        const density = Number(canvas.dataset.density ?? 5);
+
+        let width = 0;
+        let height = 0;
+        let points: Point[] = [];
+        let trackers: Tracker[] = [];
+        let frame = 0;
+        let running = false;
+        let visible = true;
+
+        function seed() {
+            const count = Math.round(
+                Math.min(90, Math.max(28, ((width * height) / 100000) * density)),
+            );
+            points = Array.from({ length: count }, () => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                vx: (Math.random() - 0.5) * 0.25,
+                vy: (Math.random() - 0.5) * 0.25,
+                r: Math.random() * 1.2 + 0.8,
+            }));
+            const trackerCount = width < 640 ? 1 : 3;
+            trackers = Array.from({ length: trackerCount }, (_, i) => ({
+                target: Math.floor((points.length / trackerCount) * i + 3) % points.length,
+                size: 64 + Math.random() * 56,
+                label: `id ${String(10 + i * 17).padStart(2, "0")} · ${(0.86 + Math.random() * 0.12).toFixed(2)}`,
+            }));
+        }
+
+        function resize() {
+            const rect = canvas.getBoundingClientRect();
+            const ratio = Math.min(window.devicePixelRatio || 1, 2);
+            width = rect.width;
+            height = rect.height;
+            canvas.width = Math.round(width * ratio);
+            canvas.height = Math.round(height * ratio);
+            ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+            seed();
+            draw();
+        }
+
+        function step() {
+            for (const p of points) {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < -20) p.x = width + 20;
+                if (p.x > width + 20) p.x = -20;
+                if (p.y < -20) p.y = height + 20;
+                if (p.y > height + 20) p.y = -20;
+            }
+        }
+
+        function drawBracket(x: number, y: number, size: number) {
+            const half = size / 2;
+            const arm = size * 0.22;
+            ctx.beginPath();
+            for (const [cx, cy, dx, dy] of [
+                [x - half, y - half, 1, 1],
+                [x + half, y - half, -1, 1],
+                [x - half, y + half, 1, -1],
+                [x + half, y + half, -1, -1],
+            ]) {
+                ctx.moveTo(cx + dx * arm, cy);
+                ctx.lineTo(cx, cy);
+                ctx.lineTo(cx, cy + dy * arm);
+            }
+            ctx.stroke();
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+
+            ctx.lineWidth = 1;
+            for (let i = 0; i < points.length; i++) {
+                const a = points[i]!;
+                for (let j = i + 1; j < points.length; j++) {
+                    const b = points[j]!;
+                    const dist = Math.hypot(a.x - b.x, a.y - b.y);
+                    if (dist < LINK_DISTANCE) {
+                        ctx.strokeStyle = `rgba(${ACCENT}, ${(1 - dist / LINK_DISTANCE) * 0.34})`;
+                        ctx.beginPath();
+                        ctx.moveTo(a.x, a.y);
+                        ctx.lineTo(b.x, b.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            for (const p of points) {
+                ctx.fillStyle = "rgba(238, 240, 238, 0.6)";
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            ctx.font = "500 10px 'JetBrains Mono Variable', ui-monospace, monospace";
+            for (const tracker of trackers) {
+                const p = points[tracker.target];
+                if (!p) continue;
+                ctx.strokeStyle = `rgba(${ACCENT}, 0.7)`;
+                ctx.lineWidth = 1.25;
+                drawBracket(p.x, p.y, tracker.size);
+                ctx.fillStyle = `rgba(${ACCENT}, 0.85)`;
+                ctx.fillText(tracker.label, p.x - tracker.size / 2, p.y - tracker.size / 2 - 6);
+                ctx.fillStyle = `rgba(${ACCENT}, 0.9)`;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 2.2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function loop() {
+            if (!running) return;
+            step();
+            draw();
+            frame = requestAnimationFrame(loop);
+        }
+
+        function start() {
+            if (running || reducedMotion.matches || !visible || document.hidden) return;
+            running = true;
+            frame = requestAnimationFrame(loop);
+        }
+
+        function stop() {
+            running = false;
+            cancelAnimationFrame(frame);
+        }
+
+        new ResizeObserver(resize).observe(canvas);
+        new IntersectionObserver(([entry]) => {
+            visible = entry?.isIntersecting ?? true;
+            if (visible) start();
+            else stop();
+        }).observe(canvas);
+        document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
+        reducedMotion.addEventListener("change", () => {
+            stop();
+            start();
+            draw();
+        });
+
+        resize();
+        start();
+    }
+
+    // Start after the page has loaded and gone idle, so the animation never competes with first paint.
+    const init = () =>
+        document.querySelectorAll<HTMLCanvasElement>("canvas[data-cv-backdrop]").forEach(setup);
+    const whenIdle = () =>
+        "requestIdleCallback" in window
+            ? requestIdleCallback(init, { timeout: 1500 })
+            : setTimeout(init, 300);
+    if (document.readyState === "complete") whenIdle();
+    else window.addEventListener("load", whenIdle, { once: true });
+</script>
