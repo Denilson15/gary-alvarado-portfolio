@@ -17,7 +17,7 @@ const otherLang: Lang = lang === "en" ? "es" : "en";
     href={getPath(routeId, otherLang)}
     hreflang={otherLang}
     lang={otherLang}
-    aria-label={t("language.switchLabel")}
+    aria-label={`${t("language.switchShort")}: ${t("language.switchLabel")}`}
     title={t("language.switchLabel")}
     class="inline-flex h-11 min-w-11 items-center justify-center rounded-full border border-line px-3 text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
     data-lang-toggle

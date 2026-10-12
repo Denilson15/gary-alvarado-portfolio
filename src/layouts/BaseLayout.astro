@@ -3,13 +3,11 @@ import "@fontsource-variable/inter";
 import "@fontsource-variable/fraunces";
 import "@/styles/global.css";
 
-import { getImage } from "astro:assets";
 import { htmlLang, languages, ogLocale, type Lang } from "@/i18n/config";
 import { getPath, type RouteId } from "@/i18n/routes";
 import { useTranslations } from "@/i18n/utils";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
-import portrait from "@/assets/gary-alvarado.jpg";
 
 interface Props {
     lang: Lang;
@@ -32,8 +30,8 @@ const alternates = (Object.keys(languages) as Lang[]).map((code) => ({
 }));
 const xDefault = new URL(getPath(routeId, "en"), site).href;
 
-const ogImage = await getImage({ src: portrait, width: 1200, format: "jpg" });
-const ogImageUrl = new URL(ogImage.src, site).href;
+// Social preview images live in public/og-en.jpg and public/og-es.jpg (1200 × 630).
+const ogImageUrl = new URL(`/og-${lang}.jpg`, site).href;
 ---
 
 <!doctype html>
@@ -64,6 +62,8 @@ const ogImageUrl = new URL(ogImage.src, site).href;
         <meta property="og:locale" content={ogLocale[lang]} />
         <meta property="og:locale:alternate" content={ogLocale[lang === "en" ? "es" : "en"]} />
         <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content={t("meta.ogImageAlt")} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={fullTitle} />
