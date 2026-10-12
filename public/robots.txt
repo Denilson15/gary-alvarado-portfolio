@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gary-alvarado.netlify.app/sitemap-index.xml

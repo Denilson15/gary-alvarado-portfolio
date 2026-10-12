@@ -1,0 +1,20 @@
+{
+    "title": "PT Anatomy Atlas",
+    "summary": {
+        "en": "An interactive full-body 3D study tool for physical therapy students.",
+        "es": "Una herramienta interactiva en 3D de todo el cuerpo, para estudiantes de fisioterapia."
+    },
+    "problem": {
+        "en": "Physical therapy students need to connect bones, muscles, nerves, joints, and movements across the whole body, which is hard to do from textbook diagrams.",
+        "es": "Los estudiantes de fisioterapia necesitan relacionar huesos, músculos, nervios, articulaciones y movimientos de todo el cuerpo, algo difícil de lograr con los diagramas de un libro."
+    },
+    "solution": {
+        "en": "Pick a body region and the joint sliders, movements, nerves, and quiz all narrow to it. The atlas covers 251 bones, 213 muscles, 117 nerve paths, and 77 movements. Its anatomy notes are still drafts awaiting expert review.",
+        "es": "Al elegir una región del cuerpo, los controles de articulaciones, los movimientos, los nervios y el cuestionario se enfocan en ella. El atlas incluye 251 huesos, 213 músculos, 117 trayectos nerviosos y 77 movimientos. Las notas de anatomía todavía son borradores pendientes de revisión experta."
+    },
+    "tags": ["three.js", "JavaScript", "3D", "Health"],
+    "category": "in-progress",
+    "repoUrl": "https://github.com/Denilson15/Anatomy-Visualization-Tool",
+    "hue": 12,
+    "order": 1
+}

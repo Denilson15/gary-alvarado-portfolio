@@ -1,0 +1,22 @@
+{
+    "title": "Quizzical",
+    "summary": {
+        "en": "A trivia game built with React that pulls fresh questions from the Open Trivia Database API.",
+        "es": "Un juego de trivia hecho con React que obtiene preguntas nuevas de la API de Open Trivia Database."
+    },
+    "problem": {
+        "en": "My first solo React project: I was given only a design and had to build all of the application logic on my own.",
+        "es": "Mi primer proyecto individual en React: solo recibí un diseño y tuve que construir toda la lógica de la aplicación por mi cuenta."
+    },
+    "solution": {
+        "en": "A multiple-choice quiz with scoring, loading and results states, and replay with new questions. Along the way I tracked down a race condition between user clicks and the API response.",
+        "es": "Un cuestionario de opción múltiple con puntaje, estados de carga y resultados, y la opción de volver a jugar con preguntas nuevas. En el proceso resolví una condición de carrera entre los clics del usuario y la respuesta de la API."
+    },
+    "tags": ["React", "JavaScript", "REST API", "Netlify"],
+    "category": "live",
+    "liveUrl": "https://quizzical-trivia-knowledge.netlify.app/",
+    "repoUrl": "https://github.com/Denilson15/quizzical",
+    "hue": 32,
+    "featured": true,
+    "order": 3
+}

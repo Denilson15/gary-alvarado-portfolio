@@ -1,0 +1,80 @@
+---
+import type { Lang } from "@/i18n/config";
+import { getPath, navRoutes } from "@/i18n/routes";
+import { useTranslations } from "@/i18n/utils";
+import { site } from "@/data/site";
+import Icon from "./Icon.astro";
+
+interface Props {
+    lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-24 border-t border-line">
+    <div class="container-page grid gap-10 py-12 md:grid-cols-[1.5fr_1fr_1fr]">
+        <div>
+            <p class="font-display text-xl font-semibold">Gary Alvarado</p>
+            <p class="mt-2 max-w-sm text-sm leading-relaxed text-ink-muted">
+                {t("footer.tagline")}
+            </p>
+        </div>
+
+        <nav aria-label={t("a11y.footerNav")}>
+            <ul class="space-y-2 text-sm">
+                {navRoutes.map((id) => (
+                    <li>
+                        <a href={getPath(id, lang)} class="text-ink-muted hover:text-accent">
+                            {t(`nav.${id}`)}
+                        </a>
+                    </li>
+                ))}
+                <li>
+                    <a href={site.resume} class="text-ink-muted hover:text-accent">
+                        {t("nav.resume")}
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <ul class="flex gap-2 md:justify-end">
+            <li>
+                <a
+                    href={site.github}
+                    class="inline-flex size-11 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:border-accent hover:text-accent"
+                    rel="me noopener noreferrer"
+                    target="_blank"
+                >
+                    <Icon name="github" label={`GitHub ${t("a11y.opensInNewTab")}`} />
+                </a>
+            </li>
+            <li>
+                <a
+                    href={site.linkedin}
+                    class="inline-flex size-11 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:border-accent hover:text-accent"
+                    rel="me noopener noreferrer"
+                    target="_blank"
+                >
+                    <Icon name="linkedin" label={`LinkedIn ${t("a11y.opensInNewTab")}`} />
+                </a>
+            </li>
+            <li>
+                <a
+                    href={`mailto:${site.email}`}
+                    class="inline-flex size-11 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:border-accent hover:text-accent"
+                >
+                    <Icon name="mail" label={t("contact.emailLabel")} />
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="container-page">
+        <div class="flex flex-col gap-1 border-t border-line py-6 text-xs text-ink-muted sm:flex-row sm:justify-between">
+            <p>{t("footer.rights", { year })}</p>
+            <p>{t("footer.builtWith")}</p>
+        </div>
+    </div>
+</footer>

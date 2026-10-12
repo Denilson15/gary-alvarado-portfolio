@@ -1,0 +1,20 @@
+{
+    "title": "Tenzies",
+    "summary": {
+        "en": "The Tenzies dice game in React: keep rolling until all ten dice show the same number.",
+        "es": "El juego de dados Tenzies en React: hay que seguir tirando hasta que los diez dados muestren el mismo número."
+    },
+    "problem": {
+        "en": "Build a complete, small game end to end with React components, state, and effects.",
+        "es": "Construir un juego pequeño y completo de principio a fin con componentes, estado y efectos de React."
+    },
+    "solution": {
+        "en": "Click a die to hold its value between rolls. The game detects when every die matches and lets you start a new round.",
+        "es": "Al hacer clic en un dado se conserva su valor entre tiradas. El juego detecta cuando todos los dados coinciden y permite empezar una nueva ronda."
+    },
+    "tags": ["React", "JavaScript", "Vite"],
+    "category": "code",
+    "repoUrl": "https://github.com/Denilson15/tenzies-react-project",
+    "hue": 210,
+    "order": 1
+}

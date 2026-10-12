@@ -1,0 +1,20 @@
+{
+    "title": "BFS Flight Paths",
+    "summary": {
+        "en": "A C++ program that reads city-to-city flights from a file and finds a route with breadth-first search.",
+        "es": "Un programa en C++ que lee vuelos entre ciudades desde un archivo y encuentra una ruta con búsqueda en anchura (BFS)."
+    },
+    "problem": {
+        "en": "Given only a list of direct flights, decide whether you can get from one city to another.",
+        "es": "Con solo una lista de vuelos directos, determinar si es posible llegar de una ciudad a otra."
+    },
+    "solution": {
+        "en": "Builds a graph with adjacency lists, then runs BFS using the STL queue and map to print a path, or reports that no route exists.",
+        "es": "Construye un grafo con listas de adyacencia y ejecuta BFS con las estructuras queue y map de la STL para mostrar una ruta, o indicar que no existe."
+    },
+    "tags": ["C++", "Graphs", "BFS", "STL"],
+    "category": "code",
+    "repoUrl": "https://github.com/Denilson15/bfs-lab",
+    "hue": 200,
+    "order": 3
+}

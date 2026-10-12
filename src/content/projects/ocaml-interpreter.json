@@ -1,0 +1,20 @@
+{
+    "title": "OCaml Stack-Based Interpreter",
+    "summary": {
+        "en": "A small interpreter written in OCaml, with a hand-written parser and a stack-based virtual machine.",
+        "es": "Un intérprete pequeño escrito en OCaml, con un analizador sintáctico hecho a mano y una máquina virtual basada en pila."
+    },
+    "problem": {
+        "en": "Understand how a language is parsed and evaluated, using functional programming instead of loops and mutation.",
+        "es": "Entender cómo se analiza y se evalúa un lenguaje, usando programación funcional en lugar de ciclos y mutación."
+    },
+    "solution": {
+        "en": "Reads a program file, parses a minimal instruction set (PUSH, POP, ADD, SUB, MUL, DIV, PRINT), and runs it on a stack-based VM, all in a single file.",
+        "es": "Lee un archivo de programa, analiza un conjunto mínimo de instrucciones (PUSH, POP, ADD, SUB, MUL, DIV, PRINT) y lo ejecuta en una máquina virtual basada en pila, todo en un solo archivo."
+    },
+    "tags": ["OCaml", "Parsing", "Interpreters"],
+    "category": "code",
+    "repoUrl": "https://github.com/Denilson15/OCaml-Grammar-Interpreter",
+    "hue": 28,
+    "order": 2
+}

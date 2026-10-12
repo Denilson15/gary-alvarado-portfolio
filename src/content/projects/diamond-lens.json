@@ -1,0 +1,21 @@
+{
+    "title": "B.A. Diamond Lens",
+    "summary": {
+        "en": "A portfolio website for a Bay Area sports and events photographer.",
+        "es": "Un sitio web de portafolio para un fotógrafo de deportes y eventos del Área de la Bahía."
+    },
+    "problem": {
+        "en": "A photographer needed one fast place to show sports, event, and car photography and explain his packages.",
+        "es": "Un fotógrafo necesitaba un solo lugar, rápido, para mostrar su fotografía de deportes, eventos y autos, y explicar sus paquetes."
+    },
+    "solution": {
+        "en": "A static Next.js site with a categorized gallery, a full-screen photo viewer, and packages and FAQ pages, all edited from simple data files.",
+        "es": "Un sitio estático en Next.js con galería por categorías, visor de fotos a pantalla completa y páginas de paquetes y preguntas frecuentes, todo editable desde archivos de datos sencillos."
+    },
+    "tags": ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    "category": "client",
+    "liveUrl": "https://ba-diamond-len.netlify.app/",
+    "repoUrl": "https://github.com/Denilson15/diamond-lens",
+    "hue": 222,
+    "order": 1
+}

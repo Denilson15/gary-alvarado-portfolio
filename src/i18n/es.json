@@ -1,0 +1,329 @@
+{
+    "meta": {
+        "siteName": "Gary Alvarado",
+        "titleTemplate": "{page} · Gary Alvarado",
+        "home": {
+            "title": "Gary Alvarado · Software, IA y HCI",
+            "description": "Gary Alvarado estudia la maestría en Ciencias de la Computación en UC Davis y desarrolla software en la intersección de la IA, la visión por computadora, la robótica y la interacción humano-computadora."
+        },
+        "projects": {
+            "title": "Proyectos",
+            "description": "Proyectos en línea, sitios web para clientes y trabajos académicos de Gary Alvarado, desde herramientas 3D para estudiar anatomía hasta un sistema de chat multiusuario en Java."
+        },
+        "about": {
+            "title": "Sobre mí",
+            "description": "Gary Alvarado estudia la maestría en Ciencias de la Computación en UC Davis. Le interesan la IA, la visión por computadora, la robótica y la HCI, y fue maestro de computación en preparatoria."
+        },
+        "services": {
+            "title": "Servicios web",
+            "description": "Sitios web rápidos y bilingües a la medida para pequeños negocios y particulares en el Área de la Bahía y Davis: páginas de aterrizaje, sitios para negocios y rediseños."
+        },
+        "contact": {
+            "title": "Contacto",
+            "description": "Escríbale a Gary Alvarado sobre investigación, prácticas profesionales, empleo o un proyecto web."
+        },
+        "thanks": {
+            "title": "Mensaje enviado",
+            "description": "Gracias por escribir."
+        },
+        "notFound": {
+            "title": "Página no encontrada",
+            "description": "La página que busca no existe."
+        },
+        "ogImageAlt": "Gary Alvarado, estudiante de posgrado en Ciencias de la Computación en UC Davis"
+    },
+    "a11y": {
+        "skipToContent": "Saltar al contenido principal",
+        "primaryNav": "Principal",
+        "footerNav": "Pie de página",
+        "openMenu": "Abrir menú",
+        "closeMenu": "Cerrar menú",
+        "opensInNewTab": "(se abre en una pestaña nueva)",
+        "homeLink": "Gary Alvarado, inicio"
+    },
+    "nav": {
+        "home": "Inicio",
+        "projects": "Proyectos",
+        "about": "Sobre mí",
+        "services": "Servicios",
+        "contact": "Contacto",
+        "resume": "CV"
+    },
+    "theme": {
+        "toggle": "Cambiar tema de color",
+        "toLight": "Cambiar a tema claro",
+        "toDark": "Cambiar a tema oscuro"
+    },
+    "language": {
+        "switchLabel": "View this page in English",
+        "switchShort": "EN"
+    },
+    "common": {
+        "liveSite": "Ver sitio",
+        "code": "Código",
+        "viewProject": "Ver proyecto",
+        "learnMore": "Más información",
+        "placeholder": "Pendiente",
+        "backHome": "Volver al inicio"
+    },
+    "home": {
+        "eyebrow": "Maestría en Ciencias de la Computación · UC Davis",
+        "titleLead": "Hola, soy Gary.",
+        "title": "Desarrollo software que ayuda a las personas a aprender y a cuidar su salud.",
+        "lead": "Soy estudiante de posgrado y trabajo donde la IA, la visión por computadora y la robótica se cruzan con la interacción humano-computadora. Antes de la maestría di clases de computación en preparatoria, y esa experiencia sigue guiando lo que construyo: herramientas claras y accesibles para personas reales.",
+        "ctaWork": "Ver mis proyectos",
+        "ctaHire": "Trabajemos juntos",
+        "photoAlt": "Retrato de Gary Alvarado con traje oscuro, frente a un árbol de hojas verdes",
+        "location": "Área de la Bahía y Davis, California",
+        "interestsLabel": "Áreas de interés",
+        "selectedTitle": "Proyectos destacados",
+        "selectedLead": "Herramientas interactivas para estudiantes, un sistema de comunicación hecho en equipo y aplicaciones pequeñas con las que aprendí a publicar proyectos de principio a fin.",
+        "viewAllProjects": "Ver todos los proyectos",
+        "currentlyTitle": "Actualmente",
+        "currently": [
+            "Maestría en Ciencias de la Computación en UC Davis (otoño de 2026 a junio de 2028)",
+            "Desarrollador en el nivel avanzado de AI Collective @ UC Davis",
+            "Aprendiendo deep learning con PyTorch y aplicándolo a visión por computadora",
+            "Aprendiendo cómo funcionan los lenguajes de programación construyendo con Rust"
+        ],
+        "servicesTitle": "¿Necesita un sitio web?",
+        "servicesBody": "También diseño sitios web rápidos, accesibles y bilingües para pequeños negocios y particulares.",
+        "servicesCta": "Ver servicios web"
+    },
+    "interests": {
+        "softwareEngineering": "Ingeniería de software",
+        "ai": "Inteligencia artificial",
+        "computerVision": "Visión por computadora",
+        "robotics": "Robótica",
+        "hci": "Interacción humano-computadora",
+        "education": "Educación",
+        "health": "Salud"
+    },
+    "projects": {
+        "eyebrow": "Trabajo",
+        "title": "Proyectos",
+        "lead": "Lo que he creado para estudiantes, clientes y cursos. Primero aparecen los proyectos en línea, para que pueda probarlos antes de revisar el código.",
+        "sections": {
+            "live": "Proyectos en línea",
+            "liveLead": "Se abren en el navegador, sin instalar nada.",
+            "client": "Sitios web para clientes",
+            "clientLead": "Sitios reales para personas reales.",
+            "code": "Código y trabajos académicos",
+            "codeLead": "Proyectos que se ejecutan localmente o que muestran mi trabajo en un lenguaje específico.",
+            "inProgress": "En desarrollo",
+            "inProgressLead": "En lo que estoy trabajando ahora."
+        },
+        "problem": "Problema",
+        "solution": "Solución",
+        "status": {
+            "live": "En línea",
+            "code": "Código",
+            "in-progress": "En desarrollo",
+            "client": "Cliente"
+        },
+        "teamProject": "Proyecto en equipo",
+        "screenshotAlt": "Captura de pantalla de {title}",
+        "previewAlt": "Vista previa de {title}",
+        "moreTitle": "Más en GitHub",
+        "moreBody": "Proyectos de práctica más pequeños, tareas de cursos y experimentos están en mi perfil de GitHub.",
+        "moreCta": "Ver todos los repositorios"
+    },
+    "about": {
+        "eyebrow": "Sobre mí",
+        "title": "De los negocios a la computación, pasando por un salón de clases.",
+        "photoAlt": "Retrato de Gary Alvarado",
+        "intro": [
+            "Soy Gary Alvarado y estudio la maestría en Ciencias de la Computación en UC Davis. Empecé en otoño de 2026 y espero graduarme en junio de 2028. Divido mi tiempo entre Davis y el Área de la Bahía.",
+            "Mi licenciatura es en Administración de Empresas. Llegué a la tecnología a través de cursos de computación y descubrí que lo que más disfruto es crear cosas que la gente realmente usa, sobre todo en educación y salud."
+        ],
+        "researchTitle": "Intereses de investigación",
+        "researchLead": "Lo que más me interesa está en los puntos donde estas áreas se cruzan, en especial donde la IA y la robótica se encuentran con la interacción humano-computadora.",
+        "research": [
+            {
+                "title": "Visión por computadora",
+                "body": "Lograr que las máquinas entiendan imágenes y movimiento, y usar eso para dar a las personas retroalimentación útil."
+            },
+            {
+                "title": "Robótica",
+                "body": "Sistemas que actúan en el mundo físico, y cómo las personas pueden trabajar con ellos de forma segura y natural."
+            },
+            {
+                "title": "Interacción humano-computadora",
+                "body": "Diseñar la tecnología en torno a quienes la usan: clara, accesible y realmente útil."
+            },
+            {
+                "title": "IA para la educación y la salud",
+                "body": "Herramientas que ayudan a los estudiantes a dominar temas difíciles y a las personas a entender su cuerpo y su salud."
+            }
+        ],
+        "teachingTitle": "Docencia",
+        "teaching": [
+            "Di clases de computación en una preparatoria del Área de la Bahía como maestro suplente de largo plazo, incluido el curso AP Computer Science Principles. Varios de mis alumnos aprobaron el examen AP.",
+            "Enseñar cambió mi forma de ver el software. Una buena herramienta, como una buena clase, parte de donde está cada persona. Por eso mis proyectos se inclinan hacia las herramientas de estudio y las interfaces claras."
+        ],
+        "teachingLink": "Ver los proyectos finales de mis alumnos",
+        "educationTitle": "Formación",
+        "education": [
+            {
+                "degree": "Maestría en Ciencias de la Computación",
+                "school": "Universidad de California, Davis",
+                "dates": "Otoño de 2026 a junio de 2028 (prevista)"
+            },
+            {
+                "degree": "Licenciatura en Administración de Empresas",
+                "school": "[PENDIENTE: nombre de la universidad]",
+                "dates": "[PENDIENTE: año de graduación]"
+            }
+        ],
+        "toolsTitle": "Herramientas",
+        "toolsGroups": {
+            "languages": "Lenguajes",
+            "frameworks": "Frameworks y bibliotecas",
+            "tools": "Herramientas",
+            "learning": "Aprendiendo ahora"
+        },
+        "locationTitle": "Ubicación",
+        "location": "El Área de la Bahía y Davis, California",
+        "resumeCta": "Descargar mi CV",
+        "contactCta": "Escríbame"
+    },
+    "services": {
+        "eyebrow": "Servicios web",
+        "title": "Sitios web para pequeños negocios y particulares.",
+        "lead": "Diseño sitios web rápidos y accesibles que se ven bien en cualquier celular, en inglés, en español o en ambos idiomas. Usted recibe un sitio fácil de actualizar y que le pertenece por completo.",
+        "ctaQuote": "Solicitar cotización",
+        "ctaWork": "Ver trabajos para clientes",
+        "offerTitle": "Qué ofrezco",
+        "offers": [
+            {
+                "title": "Páginas de aterrizaje",
+                "body": "Una sola página enfocada en un lanzamiento, un evento o un servicio nuevo, pensada para convertir visitas en llamadas y mensajes."
+            },
+            {
+                "title": "Sitios para pequeños negocios",
+                "body": "Unas cuantas páginas que explican quién es usted, qué ofrece, dónde encontrarlo y cómo contactarlo."
+            },
+            {
+                "title": "Sitios bilingües",
+                "body": "Versiones en inglés y en español redactadas para sonar naturales en cada idioma, con un selector de idioma sencillo."
+            },
+            {
+                "title": "Rediseños",
+                "body": "Una actualización moderna y adaptada a celulares de un sitio existente, que conserva lo que funciona y corrige lo que no."
+            }
+        ],
+        "includedTitle": "Todos los sitios incluyen",
+        "included": [
+            "Diseño adaptable, pensado primero para celulares",
+            "Accesibilidad básica: buen contraste, navegación con teclado y texto alternativo",
+            "Carga rápida y configuración básica para buscadores",
+            "Un formulario de contacto que envía los mensajes a su correo",
+            "Una explicación breve para que pueda hacer cambios sencillos"
+        ],
+        "workTitle": "Trabajos recientes para clientes",
+        "workLead": "Sitios reales para personas reales.",
+        "processTitle": "Cómo trabajamos",
+        "process": [
+            {
+                "title": "Llamada",
+                "body": "Hablamos de su negocio, de sus clientes y de lo que el sitio necesita lograr."
+            },
+            {
+                "title": "Diseño",
+                "body": "Preparo una propuesta de estructura y estilo para que la revise antes de empezar a construir."
+            },
+            {
+                "title": "Desarrollo",
+                "body": "Construyo el sitio, le comparto un enlace de vista previa y hago ajustes según sus comentarios."
+            },
+            {
+                "title": "Lanzamiento",
+                "body": "Conectamos su dominio, publicamos el sitio y le muestro cómo mantenerlo al día."
+            }
+        ],
+        "pricingTitle": "Precios",
+        "pricingBody": "[PENDIENTE: Agregue sus precios, paquetes o una nota como \"Cada proyecto se cotiza de forma individual después de la primera llamada.\"]",
+        "testimonialsTitle": "Lo que dicen los clientes",
+        "testimonialsBody": "[PENDIENTE: Agregue aquí testimonios reales, con permiso de cada cliente. Mantenga esta sección oculta hasta tenerlos.]",
+        "formTitle": "Solicitar cotización",
+        "formLead": "Cuénteme un poco sobre su proyecto. Le responderé por correo para agendar una llamada breve.",
+        "form": {
+            "name": "Nombre",
+            "email": "Correo electrónico",
+            "business": "Nombre del negocio o proyecto",
+            "businessHint": "Opcional",
+            "type": "¿Qué necesita?",
+            "typeOptions": {
+                "landing": "Página de aterrizaje",
+                "business": "Sitio para pequeño negocio",
+                "bilingual": "Sitio bilingüe",
+                "redesign": "Rediseño de un sitio existente",
+                "other": "Otra cosa"
+            },
+            "language": "Idioma del sitio",
+            "languageOptions": {
+                "en": "Inglés",
+                "es": "Español",
+                "both": "Ambos"
+            },
+            "currentSite": "Sitio web actual, si tiene",
+            "timeline": "Fecha ideal",
+            "timelineHint": "Opcional, por ejemplo \"antes de la apertura en primavera\"",
+            "message": "Cuénteme sobre el proyecto",
+            "submit": "Enviar solicitud"
+        }
+    },
+    "contact": {
+        "eyebrow": "Contacto",
+        "title": "Hablemos.",
+        "lead": "Estoy abierto a colaborar en investigación, a prácticas profesionales y a conversar sobre IA, visión por computadora y HCI. Si se trata de un sitio web, la forma más rápida es el formulario de cotización en la página de Servicios.",
+        "formTitle": "Enviar un mensaje",
+        "elsewhereTitle": "En otros sitios",
+        "emailLabel": "Correo",
+        "githubLabel": "GitHub",
+        "linkedinLabel": "LinkedIn",
+        "resumeLabel": "CV (PDF)",
+        "servicesLink": "Ir al formulario de cotización",
+        "form": {
+            "name": "Nombre",
+            "email": "Correo electrónico",
+            "reason": "¿Sobre qué es su mensaje?",
+            "reasonOptions": {
+                "research": "Investigación",
+                "role": "Práctica profesional o empleo",
+                "website": "Proyecto web",
+                "other": "Otro tema"
+            },
+            "message": "Mensaje",
+            "submit": "Enviar mensaje"
+        }
+    },
+    "form": {
+        "required": "Obligatorio",
+        "optional": "Opcional",
+        "selectPlaceholder": "Elija una opción",
+        "honeypot": "Deje este campo vacío",
+        "sending": "Enviando…",
+        "errorSummary": "Revise los campos marcados.",
+        "errors": {
+            "required": "Este campo es obligatorio.",
+            "email": "Escriba un correo válido, por ejemplo nombre@ejemplo.com."
+        }
+    },
+    "thanks": {
+        "title": "Gracias, su mensaje va en camino.",
+        "body": "Leo todos los mensajes y le responderé por correo.",
+        "cta": "Volver al inicio"
+    },
+    "notFound": {
+        "eyebrow": "404",
+        "title": "Esta página no existe.",
+        "body": "Puede que el enlace esté roto o que la página se haya movido.",
+        "cta": "Volver al inicio"
+    },
+    "footer": {
+        "tagline": "Software para el aprendizaje, la salud y las personas que lo usan.",
+        "builtWith": "Hecho con Astro y Tailwind CSS.",
+        "rights": "© {year} Gary Alvarado"
+    }
+}

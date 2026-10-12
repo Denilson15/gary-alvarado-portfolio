@@ -1,0 +1,24 @@
+{
+    "title": "Communication System",
+    "summary": {
+        "en": "A real-time, multi-user chat system in Java with a TCP socket server, a Swing desktop client, group and private chats, and an IT audit mode.",
+        "es": "Un sistema de chat multiusuario en tiempo real hecho en Java, con servidor de sockets TCP, cliente de escritorio en Swing, chats grupales y privados, y un modo de auditoría para TI."
+    },
+    "problem": {
+        "en": "A five-person software engineering team had to take a messaging system from requirements and design documents to working, tested code.",
+        "es": "Un equipo de cinco personas en un curso de ingeniería de software tenía que llevar un sistema de mensajería desde los requisitos y el diseño hasta un código funcional y probado."
+    },
+    "solution": {
+        "en": "I worked on the client GUI, the server logic, the TCP/IP layer, and authentication. A browser demo recreates the client with sample data, so anyone can try it without installing Java.",
+        "es": "Trabajé en la interfaz del cliente, la lógica del servidor, la capa TCP/IP y la autenticación. Una demo en el navegador recrea el cliente con datos de ejemplo, para que cualquiera pueda probarlo sin instalar Java."
+    },
+    "tags": ["Java", "Swing", "TCP/IP", "Authentication"],
+    "category": "live",
+    "liveUrl": "https://denilson15.github.io/Modern-Communications-App/",
+    "repoUrl": "https://github.com/Denilson15/Modern-Communications-App",
+    "image": "../../assets/projects/communication-system.png",
+    "hue": 172,
+    "team": true,
+    "featured": true,
+    "order": 2
+}

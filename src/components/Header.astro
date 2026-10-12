@@ -1,0 +1,67 @@
+---
+import type { Lang } from "@/i18n/config";
+import { getPath, navRoutes, type RouteId } from "@/i18n/routes";
+import { useTranslations } from "@/i18n/utils";
+import LangToggle from "./LangToggle.astro";
+import ThemeToggle from "./ThemeToggle";
+import MobileMenu from "./MobileMenu";
+
+interface Props {
+    lang: Lang;
+    routeId: RouteId;
+}
+
+const { lang, routeId } = Astro.props;
+const t = useTranslations(lang);
+
+const links = navRoutes.map((id) => ({
+    href: getPath(id, lang),
+    label: t(`nav.${id}`),
+    current: id === routeId,
+}));
+---
+
+<header class="sticky top-0 z-40 border-b border-line/70 bg-bg/85 backdrop-blur-md">
+    <div class="container-page relative flex h-16 items-center justify-between gap-4">
+        <a
+            href={getPath("home", lang)}
+            class="font-display text-xl font-semibold tracking-tight text-ink hover:text-accent"
+            aria-label={t("a11y.homeLink")}
+            aria-current={routeId === "home" ? "page" : undefined}
+        >
+            Gary Alvarado
+        </a>
+
+        <nav aria-label={t("a11y.primaryNav")} class="hidden md:block">
+            <ul class="flex items-center gap-1">
+                {links.map((link) => (
+                    <li>
+                        <a
+                            href={link.href}
+                            aria-current={link.current ? "page" : undefined}
+                            class="relative rounded-full px-3.5 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-ink aria-[current=page]:text-ink aria-[current=page]:after:absolute aria-[current=page]:after:inset-x-3.5 aria-[current=page]:after:-bottom-0.5 aria-[current=page]:after:h-0.5 aria-[current=page]:after:rounded-full aria-[current=page]:after:bg-accent"
+                        >
+                            {link.label}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+
+        <div class="flex items-center gap-1">
+            <LangToggle lang={lang} routeId={routeId} />
+            <ThemeToggle
+                client:idle
+                toLightLabel={t("theme.toLight")}
+                toDarkLabel={t("theme.toDark")}
+            />
+            <MobileMenu
+                client:media="(max-width: 767px)"
+                links={links}
+                openLabel={t("a11y.openMenu")}
+                closeLabel={t("a11y.closeMenu")}
+                navLabel={t("a11y.primaryNav")}
+            />
+        </div>
+    </div>
+</header>

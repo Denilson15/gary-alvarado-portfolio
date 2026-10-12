@@ -1,0 +1,124 @@
+---
+import "@fontsource-variable/inter";
+import "@fontsource-variable/fraunces";
+import "@/styles/global.css";
+
+import { getImage } from "astro:assets";
+import { htmlLang, languages, ogLocale, type Lang } from "@/i18n/config";
+import { getPath, type RouteId } from "@/i18n/routes";
+import { useTranslations } from "@/i18n/utils";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import portrait from "@/assets/gary-alvarado.jpg";
+
+interface Props {
+    lang: Lang;
+    routeId: RouteId;
+    /** Page title without the site name. Leave out on the home page. */
+    title?: string;
+    description: string;
+    noindex?: boolean;
+}
+
+const { lang, routeId, title, description, noindex = false } = Astro.props;
+const t = useTranslations(lang);
+
+const fullTitle = title ? t("meta.titleTemplate", { page: title }) : t("meta.home.title");
+const site = Astro.site ?? new URL(Astro.url.origin);
+const canonical = new URL(getPath(routeId, lang), site).href;
+const alternates = (Object.keys(languages) as Lang[]).map((code) => ({
+    hreflang: htmlLang[code],
+    href: new URL(getPath(routeId, code), site).href,
+}));
+const xDefault = new URL(getPath(routeId, "en"), site).href;
+
+const ogImage = await getImage({ src: portrait, width: 1200, format: "jpg" });
+const ogImageUrl = new URL(ogImage.src, site).href;
+---
+
+<!doctype html>
+<html lang={htmlLang[lang]} data-theme="light">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{fullTitle}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        {alternates.map((alt) => (
+            <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+        ))}
+        <link rel="alternate" hreflang="x-default" href={xDefault} />
+        {noindex && <meta name="robots" content="noindex" />}
+
+        <meta name="color-scheme" content="light dark" />
+        <meta name="theme-color" content="#f8f6f1" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0e1113" media="(prefers-color-scheme: dark)" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="sitemap" href="/sitemap-index.xml" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={t("meta.siteName")} />
+        <meta property="og:title" content={fullTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:locale" content={ogLocale[lang]} />
+        <meta property="og:locale:alternate" content={ogLocale[lang === "en" ? "es" : "en"]} />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:alt" content={t("meta.ogImageAlt")} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={fullTitle} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImageUrl} />
+
+        <script is:inline>
+            // Apply the saved or system theme before first paint to avoid a flash.
+            (function () {
+                var root = document.documentElement;
+                root.classList.add("js");
+                var saved = null;
+                try {
+                    saved = localStorage.getItem("theme");
+                } catch (e) {}
+                var dark = saved
+                    ? saved === "dark"
+                    : window.matchMedia("(prefers-color-scheme: dark)").matches;
+                root.dataset.theme = dark ? "dark" : "light";
+            })();
+        </script>
+        <slot name="head" />
+    </head>
+    <body class="flex min-h-dvh flex-col">
+        <a
+            href="#main"
+            class="sr-only z-50 rounded-full bg-accent px-4 py-2 font-semibold text-accent-ink focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+        >
+            {t("a11y.skipToContent")}
+        </a>
+        <Header lang={lang} routeId={routeId} />
+        <main id="main" tabindex="-1" class="flex-1 outline-none">
+            <slot />
+        </main>
+        <Footer lang={lang} />
+
+        <script>
+            // Fade elements in as they scroll into view. CSS skips this under reduced motion.
+            const items = document.querySelectorAll<HTMLElement>("[data-reveal]");
+            if ("IntersectionObserver" in window) {
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        for (const entry of entries) {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("is-visible");
+                                observer.unobserve(entry.target);
+                            }
+                        }
+                    },
+                    { rootMargin: "0px 0px -8% 0px" },
+                );
+                items.forEach((item) => observer.observe(item));
+            } else {
+                items.forEach((item) => item.classList.add("is-visible"));
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+---
+/**
+ * Decorative stand-in shown when a project has no screenshot yet.
+ * Add an `image` to the project's JSON file to replace it.
+ */
+interface Props {
+    title: string;
+    hue: number;
+}
+
+const { title, hue } = Astro.props;
+const initials = title
+    .split(/[\s:.-]+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0]?.toUpperCase())
+    .join("");
+---
+
+<div
+    class="project-preview relative h-full w-full overflow-hidden"
+    style={`--hue: ${hue}`}
+    aria-hidden="true"
+>
+    <span class="absolute -top-6 right-4 font-display text-[9rem] leading-none font-semibold tracking-tighter opacity-90 select-none">
+        {initials}
+    </span>
+</div>
+
+<style>
+    .project-preview {
+        color: hsl(var(--hue) 45% 28% / 0.22);
+        background:
+            radial-gradient(120% 90% at 85% 0%, hsl(var(--hue) 80% 72% / 0.55), transparent 60%),
+            radial-gradient(
+                90% 80% at 0% 100%,
+                hsl(calc(var(--hue) + 40) 70% 70% / 0.4),
+                transparent 60%
+            ),
+            linear-gradient(135deg, hsl(var(--hue) 40% 96%), hsl(var(--hue) 35% 90%));
+    }
+
+    .project-preview::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(hsl(var(--hue) 30% 40% / 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, hsl(var(--hue) 30% 40% / 0.08) 1px, transparent 1px);
+        background-size: 28px 28px;
+        mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
+
+    :global([data-theme="dark"]) .project-preview {
+        color: hsl(var(--hue) 70% 75% / 0.2);
+        background:
+            radial-gradient(120% 90% at 85% 0%, hsl(var(--hue) 70% 45% / 0.45), transparent 60%),
+            radial-gradient(
+                90% 80% at 0% 100%,
+                hsl(calc(var(--hue) + 40) 60% 40% / 0.35),
+                transparent 60%
+            ),
+            linear-gradient(135deg, hsl(var(--hue) 25% 14%), hsl(var(--hue) 20% 10%));
+    }
+</style>

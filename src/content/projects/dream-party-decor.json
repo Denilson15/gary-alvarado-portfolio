@@ -1,0 +1,21 @@
+{
+    "title": "Dream Party Decor",
+    "summary": {
+        "en": "A contact page for a family member's event decoration business.",
+        "es": "Una página de contacto para el negocio de decoración de eventos de un familiar."
+    },
+    "problem": {
+        "en": "The business needed a simple way for new clients to reach out and share their event details.",
+        "es": "El negocio necesitaba una forma sencilla para que los nuevos clientes se comunicaran y compartieran los detalles de su evento."
+    },
+    "solution": {
+        "en": "A responsive contact page where clients send event details directly, built by hand on top of a Scrimba baseline design.",
+        "es": "Una página de contacto adaptable donde los clientes envían directamente los detalles de su evento, construida a mano a partir de un diseño base de Scrimba."
+    },
+    "tags": ["HTML", "CSS", "JavaScript", "Netlify"],
+    "category": "client",
+    "liveUrl": "https://dreampartydecor.netlify.app/",
+    "repoUrl": "https://github.com/Denilson15/dream-party-decor-webapge",
+    "hue": 320,
+    "order": 2
+}

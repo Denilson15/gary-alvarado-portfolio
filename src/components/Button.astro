@@ -1,0 +1,41 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Variant = "primary" | "secondary" | "ghost";
+
+interface Props extends HTMLAttributes<"a"> {
+    href: string;
+    variant?: Variant;
+    external?: boolean;
+    newTabLabel?: string;
+}
+
+const {
+    href,
+    variant = "primary",
+    external = false,
+    newTabLabel,
+    class: className,
+    ...rest
+} = Astro.props;
+
+const base =
+    "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-[background-color,color,border-color,transform] duration-200 motion-safe:hover:-translate-y-0.5";
+
+const variants: Record<Variant, string> = {
+    primary: "bg-accent text-accent-ink hover:bg-accent-strong dark:hover:bg-accent-strong",
+    secondary: "border border-line bg-surface text-ink hover:border-accent hover:text-accent",
+    ghost: "text-ink hover:text-accent",
+};
+---
+
+<a
+    href={href}
+    class:list={[base, variants[variant], className]}
+    target={external ? "_blank" : undefined}
+    rel={external ? "noopener noreferrer" : undefined}
+    {...rest}
+>
+    <slot />
+    {external && newTabLabel && <span class="sr-only">{newTabLabel}</span>}
+</a>

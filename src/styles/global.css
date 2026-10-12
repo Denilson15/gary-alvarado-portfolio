@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+ * Color tokens. Every pair used for text meets WCAG AA (4.5:1) against its background
+ * in both themes. Change colors here, not in components.
+ */
+:root {
+    color-scheme: light;
+    --bg: #f8f6f1;
+    --surface: #ffffff;
+    --surface-muted: #efece5;
+    --ink: #15181c;
+    --ink-muted: #4a5059;
+    --line: #dedad1;
+    --accent: #0d6e66;
+    --accent-ink: #ffffff;
+    --accent-soft: #d8ede9;
+    --accent-strong: #0a5751;
+    --warn-bg: #fff4d6;
+    --warn-ink: #6b4a00;
+    --warn-line: #e7c46a;
+    --focus: #0d6e66;
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #0e1113;
+    --surface: #161a1e;
+    --surface-muted: #1d2226;
+    --ink: #eceae5;
+    --ink-muted: #a6adb5;
+    --line: #2a3035;
+    --accent: #4fd1c1;
+    --accent-ink: #062320;
+    --accent-soft: #123532;
+    --accent-strong: #8ae6da;
+    --warn-bg: #2e2510;
+    --warn-ink: #f3d68a;
+    --warn-line: #6b5520;
+    --focus: #8ae6da;
+}
+
+@theme inline {
+    --color-bg: var(--bg);
+    --color-surface: var(--surface);
+    --color-surface-muted: var(--surface-muted);
+    --color-ink: var(--ink);
+    --color-ink-muted: var(--ink-muted);
+    --color-line: var(--line);
+    --color-accent: var(--accent);
+    --color-accent-ink: var(--accent-ink);
+    --color-accent-soft: var(--accent-soft);
+    --color-accent-strong: var(--accent-strong);
+    --color-warn-bg: var(--warn-bg);
+    --color-warn-ink: var(--warn-ink);
+    --color-warn-line: var(--warn-line);
+}
+
+@theme {
+    --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Fraunces Variable", ui-serif, Georgia, serif;
+    --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+    html {
+        background-color: var(--bg);
+        color: var(--ink);
+        -webkit-text-size-adjust: 100%;
+        text-rendering: optimizeLegibility;
+        scroll-padding-top: 5rem;
+    }
+
+    body {
+        @apply bg-bg font-sans text-ink antialiased;
+    }
+
+    h1,
+    h2,
+    h3 {
+        @apply font-display text-balance;
+        font-optical-sizing: auto;
+    }
+
+    p {
+        text-wrap: pretty;
+    }
+
+    ::selection {
+        background-color: var(--accent-soft);
+        color: var(--ink);
+    }
+
+    :focus-visible {
+        outline: 3px solid var(--focus);
+        outline-offset: 3px;
+        border-radius: 4px;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        html {
+            scroll-behavior: smooth;
+        }
+    }
+}
+
+@layer components {
+    .container-page {
+        @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+    }
+
+    .eyebrow {
+        @apply text-sm font-semibold tracking-[0.12em] text-accent uppercase;
+    }
+
+    .link {
+        @apply font-medium text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent;
+    }
+}
+
+/*
+ * Scroll reveal. Elements with [data-reveal] fade up once they enter the viewport.
+ * Without JavaScript, or with reduced motion, they are simply visible.
+ */
+@media (prefers-reduced-motion: no-preference) {
+    .js [data-reveal] {
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+            opacity 0.7s var(--ease-out-soft),
+            transform 0.7s var(--ease-out-soft);
+        transition-delay: var(--reveal-delay, 0ms);
+    }
+
+    .js [data-reveal].is-visible {
+        opacity: 1;
+        transform: none;
+    }
+}

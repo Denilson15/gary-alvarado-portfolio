@@ -1,0 +1,22 @@
+---
+interface Props {
+    tags: readonly string[];
+    label?: string;
+    size?: "sm" | "md";
+}
+
+const { tags, label, size = "sm" } = Astro.props;
+---
+
+<ul class="flex flex-wrap gap-2" aria-label={label}>
+    {tags.map((tag) => (
+        <li
+            class:list={[
+                "rounded-full border border-line bg-surface-muted font-medium text-ink-muted",
+                size === "sm" ? "px-2.5 py-1 text-xs" : "px-3.5 py-1.5 text-sm",
+            ]}
+        >
+            {tag}
+        </li>
+    ))}
+</ul>

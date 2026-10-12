@@ -1,0 +1,329 @@
+{
+    "meta": {
+        "siteName": "Gary Alvarado",
+        "titleTemplate": "{page} · Gary Alvarado",
+        "home": {
+            "title": "Gary Alvarado · Software, AI & HCI",
+            "description": "Gary Alvarado is a Computer Science master's student at UC Davis building software at the intersection of AI, computer vision, robotics, and human-computer interaction."
+        },
+        "projects": {
+            "title": "Projects",
+            "description": "Live projects, client websites, and coursework by Gary Alvarado, from 3D anatomy study tools to a multi-user Java chat system."
+        },
+        "about": {
+            "title": "About",
+            "description": "Gary Alvarado is an MS Computer Science student at UC Davis interested in AI, computer vision, robotics, and HCI, with a background in teaching high school computer science."
+        },
+        "services": {
+            "title": "Web services",
+            "description": "Custom, fast, bilingual websites for small businesses and individuals in the Bay Area and Davis: landing pages, small business sites, and redesigns."
+        },
+        "contact": {
+            "title": "Contact",
+            "description": "Get in touch with Gary Alvarado about research, internships, roles, or a website project."
+        },
+        "thanks": {
+            "title": "Message sent",
+            "description": "Thanks for reaching out."
+        },
+        "notFound": {
+            "title": "Page not found",
+            "description": "The page you were looking for doesn't exist."
+        },
+        "ogImageAlt": "Gary Alvarado, Computer Science graduate student at UC Davis"
+    },
+    "a11y": {
+        "skipToContent": "Skip to main content",
+        "primaryNav": "Primary",
+        "footerNav": "Footer",
+        "openMenu": "Open menu",
+        "closeMenu": "Close menu",
+        "opensInNewTab": "(opens in a new tab)",
+        "homeLink": "Gary Alvarado, home"
+    },
+    "nav": {
+        "home": "Home",
+        "projects": "Projects",
+        "about": "About",
+        "services": "Services",
+        "contact": "Contact",
+        "resume": "Resume"
+    },
+    "theme": {
+        "toggle": "Toggle color theme",
+        "toLight": "Switch to light theme",
+        "toDark": "Switch to dark theme"
+    },
+    "language": {
+        "switchLabel": "Ver esta página en español",
+        "switchShort": "ES"
+    },
+    "common": {
+        "liveSite": "Live site",
+        "code": "Code",
+        "viewProject": "View project",
+        "learnMore": "Learn more",
+        "placeholder": "Placeholder",
+        "backHome": "Back to home"
+    },
+    "home": {
+        "eyebrow": "MS Computer Science · UC Davis",
+        "titleLead": "Hi, I'm Gary.",
+        "title": "I build software that helps people learn and stay healthy.",
+        "lead": "I'm a graduate student working where AI, computer vision, and robotics meet human-computer interaction. Before grad school I taught computer science to high school students, and that classroom still shapes how I build: clear, approachable tools for real people.",
+        "ctaWork": "View my work",
+        "ctaHire": "Hire me",
+        "photoAlt": "Portrait of Gary Alvarado wearing a dark suit, standing in front of green leaves",
+        "location": "Bay Area & Davis, CA",
+        "interestsLabel": "Focus areas",
+        "selectedTitle": "Selected work",
+        "selectedLead": "Interactive tools for students, a team-built communication system, and small apps that taught me how to ship.",
+        "viewAllProjects": "See all projects",
+        "currentlyTitle": "Currently",
+        "currently": [
+            "MS in Computer Science at UC Davis (Fall 2026 to June 2028)",
+            "Developer on the Advanced track at AI Collective @ UC Davis",
+            "Learning deep learning with PyTorch and applying it to computer vision",
+            "Learning how programming languages work by building with Rust"
+        ],
+        "servicesTitle": "Need a website?",
+        "servicesBody": "I also build fast, accessible, bilingual websites for small businesses and individuals.",
+        "servicesCta": "See web services"
+    },
+    "interests": {
+        "softwareEngineering": "Software engineering",
+        "ai": "Artificial intelligence",
+        "computerVision": "Computer vision",
+        "robotics": "Robotics",
+        "hci": "Human-computer interaction",
+        "education": "Education",
+        "health": "Health"
+    },
+    "projects": {
+        "eyebrow": "Work",
+        "title": "Projects",
+        "lead": "Things I've built for students, clients, and classes. Live projects come first, so you can try them before reading the code.",
+        "sections": {
+            "live": "Live projects",
+            "liveLead": "Open them in your browser, no install needed.",
+            "client": "Client websites",
+            "clientLead": "Real sites built for real people.",
+            "code": "Code & coursework",
+            "codeLead": "Projects that run locally or show my work in a specific language.",
+            "inProgress": "In progress",
+            "inProgressLead": "What I'm building right now."
+        },
+        "problem": "Problem",
+        "solution": "Solution",
+        "status": {
+            "live": "Live",
+            "code": "Code",
+            "in-progress": "In progress",
+            "client": "Client"
+        },
+        "teamProject": "Team project",
+        "screenshotAlt": "Screenshot of {title}",
+        "previewAlt": "Preview card for {title}",
+        "moreTitle": "More on GitHub",
+        "moreBody": "Smaller practice projects, coursework, and experiments live on my GitHub profile.",
+        "moreCta": "Browse all repositories"
+    },
+    "about": {
+        "eyebrow": "About",
+        "title": "From business to computer science, by way of a classroom.",
+        "photoAlt": "Portrait of Gary Alvarado",
+        "intro": [
+            "I'm Gary Alvarado, a Master's student in Computer Science at UC Davis. I started in Fall 2026 and expect to graduate in June 2028. I split my time between Davis and the Bay Area.",
+            "My bachelor's degree is in Business. I moved into tech through computer science coursework and found that what I enjoy most is building things people actually use, especially in education and health."
+        ],
+        "researchTitle": "Research interests",
+        "researchLead": "I'm most interested in the places where these areas overlap, especially where AI and robotics meet human-computer interaction.",
+        "research": [
+            {
+                "title": "Computer vision",
+                "body": "Teaching machines to understand images and movement, and using that to give people useful feedback."
+            },
+            {
+                "title": "Robotics",
+                "body": "Systems that act in the physical world, and how people can work with them safely and naturally."
+            },
+            {
+                "title": "Human-computer interaction",
+                "body": "Designing technology around the people who use it: clear, accessible, and actually helpful."
+            },
+            {
+                "title": "AI for education and health",
+                "body": "Tools that help students learn difficult material and help people understand their bodies and health."
+            }
+        ],
+        "teachingTitle": "Teaching",
+        "teaching": [
+            "I taught computer science at a Bay Area high school as a long-term substitute, including AP Computer Science Principles. Several of my students passed the AP exam.",
+            "Teaching changed how I think about software. A good tool, like a good lesson, meets people where they are. That's why my projects lean toward study tools and clear interfaces."
+        ],
+        "teachingLink": "See my students' class portfolio projects",
+        "educationTitle": "Education",
+        "education": [
+            {
+                "degree": "M.S. Computer Science",
+                "school": "University of California, Davis",
+                "dates": "Fall 2026 to June 2028 (expected)"
+            },
+            {
+                "degree": "B.S. Business",
+                "school": "[PLACEHOLDER: university name]",
+                "dates": "[PLACEHOLDER: graduation year]"
+            }
+        ],
+        "toolsTitle": "Tools I use",
+        "toolsGroups": {
+            "languages": "Languages",
+            "frameworks": "Frameworks & libraries",
+            "tools": "Tools",
+            "learning": "Currently learning"
+        },
+        "locationTitle": "Based in",
+        "location": "The Bay Area and Davis, California",
+        "resumeCta": "Download my resume",
+        "contactCta": "Get in touch"
+    },
+    "services": {
+        "eyebrow": "Web services",
+        "title": "Websites for small businesses and individuals.",
+        "lead": "I build fast, accessible websites that look good on every phone, in English, Spanish, or both. You get a site that's easy to update and fully yours.",
+        "ctaQuote": "Request a quote",
+        "ctaWork": "See client work",
+        "offerTitle": "What I offer",
+        "offers": [
+            {
+                "title": "Landing pages",
+                "body": "A single, focused page for a launch, an event, or a new service, built to turn visitors into calls and messages."
+            },
+            {
+                "title": "Small business websites",
+                "body": "A few pages that cover who you are, what you offer, where to find you, and how to reach you."
+            },
+            {
+                "title": "Bilingual websites",
+                "body": "English and Spanish versions written to sound natural in each language, with a simple language switch."
+            },
+            {
+                "title": "Redesigns",
+                "body": "A modern, mobile-friendly refresh of an existing site that keeps what works and fixes what doesn't."
+            }
+        ],
+        "includedTitle": "Every site includes",
+        "included": [
+            "Mobile-first, responsive design",
+            "Accessibility basics: readable contrast, keyboard navigation, alt text",
+            "Fast loading and basic search engine setup",
+            "A contact form that sends messages to your email",
+            "A short walkthrough so you can make simple updates"
+        ],
+        "workTitle": "Recent client work",
+        "workLead": "Real sites for real people.",
+        "processTitle": "How it works",
+        "process": [
+            {
+                "title": "Call",
+                "body": "We talk about your business, your customers, and what the site needs to do."
+            },
+            {
+                "title": "Design",
+                "body": "I put together a layout and style for you to review before any building starts."
+            },
+            {
+                "title": "Build",
+                "body": "I build the site, share a preview link, and make revisions based on your feedback."
+            },
+            {
+                "title": "Launch",
+                "body": "We connect your domain, go live, and I show you how to keep things up to date."
+            }
+        ],
+        "pricingTitle": "Pricing",
+        "pricingBody": "[PLACEHOLDER: Add your pricing, packages, or a note such as \"Every project is quoted individually after our first call.\"]",
+        "testimonialsTitle": "What clients say",
+        "testimonialsBody": "[PLACEHOLDER: Add real testimonials here, with the client's permission. Leave this section hidden until you have them.]",
+        "formTitle": "Request a quote",
+        "formLead": "Tell me a bit about your project. I'll follow up by email to set up a short call.",
+        "form": {
+            "name": "Your name",
+            "email": "Email",
+            "business": "Business or project name",
+            "businessHint": "Optional",
+            "type": "What do you need?",
+            "typeOptions": {
+                "landing": "Landing page",
+                "business": "Small business website",
+                "bilingual": "Bilingual website",
+                "redesign": "Redesign of an existing site",
+                "other": "Something else"
+            },
+            "language": "Site language",
+            "languageOptions": {
+                "en": "English",
+                "es": "Spanish",
+                "both": "Both"
+            },
+            "currentSite": "Current website, if any",
+            "timeline": "Ideal timeline",
+            "timelineHint": "Optional, for example \"before our spring opening\"",
+            "message": "Tell me about the project",
+            "submit": "Send request"
+        }
+    },
+    "contact": {
+        "eyebrow": "Contact",
+        "title": "Let's talk.",
+        "lead": "I'm open to research collaborations, internships, and conversations about AI, computer vision, and HCI. For a website project, the quote form on the Services page is the fastest route.",
+        "formTitle": "Send a message",
+        "elsewhereTitle": "Elsewhere",
+        "emailLabel": "Email",
+        "githubLabel": "GitHub",
+        "linkedinLabel": "LinkedIn",
+        "resumeLabel": "Resume (PDF)",
+        "servicesLink": "Go to the quote form",
+        "form": {
+            "name": "Your name",
+            "email": "Email",
+            "reason": "What is this about?",
+            "reasonOptions": {
+                "research": "Research",
+                "role": "Internship or job opportunity",
+                "website": "Website project",
+                "other": "Something else"
+            },
+            "message": "Message",
+            "submit": "Send message"
+        }
+    },
+    "form": {
+        "required": "Required",
+        "optional": "Optional",
+        "selectPlaceholder": "Choose one",
+        "honeypot": "Leave this field empty",
+        "sending": "Sending…",
+        "errorSummary": "Please fix the highlighted fields.",
+        "errors": {
+            "required": "This field is required.",
+            "email": "Enter a valid email address, like name@example.com."
+        }
+    },
+    "thanks": {
+        "title": "Thanks, your message is on its way.",
+        "body": "I read every message and will reply by email.",
+        "cta": "Back to home"
+    },
+    "notFound": {
+        "eyebrow": "404",
+        "title": "This page doesn't exist.",
+        "body": "The link may be broken, or the page may have moved.",
+        "cta": "Back to home"
+    },
+    "footer": {
+        "tagline": "Software for learning, health, and the people who use it.",
+        "builtWith": "Built with Astro and Tailwind CSS.",
+        "rights": "© {year} Gary Alvarado"
+    }
+}

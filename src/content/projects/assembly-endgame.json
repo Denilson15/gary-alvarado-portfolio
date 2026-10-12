@@ -1,0 +1,21 @@
+{
+    "title": "Assembly: Endgame",
+    "summary": {
+        "en": "A Hangman-style word game in React where every wrong guess wipes out a programming language.",
+        "es": "Un juego de palabras al estilo del ahorcado, hecho en React, donde cada error elimina un lenguaje de programación."
+    },
+    "problem": {
+        "en": "Turn a classic word game into hands-on practice with React state, effects, and conditional rendering.",
+        "es": "Convertir un juego de palabras clásico en práctica real con el estado, los efectos y el renderizado condicional de React."
+    },
+    "solution": {
+        "en": "Eight attempts to guess the word, instant feedback on each letter, status messages that change with your progress, and confetti when you win.",
+        "es": "Ocho intentos para adivinar la palabra, retroalimentación inmediata en cada letra, mensajes que cambian según el avance y confeti al ganar."
+    },
+    "tags": ["React", "JavaScript", "CSS"],
+    "category": "live",
+    "liveUrl": "https://programmingendgame.netlify.app/",
+    "repoUrl": "https://github.com/Denilson15/assembly-endgame",
+    "hue": 350,
+    "order": 4
+}
