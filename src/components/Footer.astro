@@ -63,10 +63,10 @@ const year = new Date().getFullYear();
             </li>
             <li>
                 <a
-                    href={`mailto:${site.email}`}
+                    href={getPath("contact", lang)}
                     class="inline-flex size-11 items-center justify-center rounded-full border border-line text-ink-muted transition-colors hover:border-accent hover:text-accent"
                 >
-                    <Icon name="mail" label={t("contact.emailLabel")} />
+                    <Icon name="mail" label={t("nav.contact")} />
                 </a>
             </li>
         </ul>

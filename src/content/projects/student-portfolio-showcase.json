@@ -1,0 +1,20 @@
+{
+    "title": "AP CS Student Portfolio Showcase",
+    "summary": {
+        "en": "A portfolio platform that showcases 70+ JavaScript projects built by my AP Computer Science students.",
+        "es": "Una plataforma de portafolio que reúne más de 70 proyectos en JavaScript creados por mis alumnos de AP Computer Science."
+    },
+    "problem": {
+        "en": "My students built personal websites as their final projects and needed one place to share them.",
+        "es": "Mis alumnos crearon sitios personales como proyecto final y necesitaban un solo lugar para compartirlos."
+    },
+    "solution": {
+        "en": "One showcase that collects every student's final project, with links to each repository and live site.",
+        "es": "Una sola galería que reúne el proyecto final de cada alumno, con enlaces a cada repositorio y sitio en línea."
+    },
+    "tags": ["JavaScript", "HTML", "CSS", "Teaching"],
+    "category": "code",
+    "repoUrl": "https://github.com/Denilson15/Student-Webpages",
+    "hue": 150,
+    "order": 4
+}

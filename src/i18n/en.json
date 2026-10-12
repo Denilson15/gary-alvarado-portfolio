@@ -74,7 +74,7 @@
         "ctaWork": "View my work",
         "ctaHire": "Hire me",
         "photoAlt": "Portrait of Gary Alvarado wearing a dark suit, standing in front of green leaves",
-        "location": "Bay Area & Davis, CA",
+        "location": "San Francisco Bay Area & Davis, CA",
         "interestsLabel": "Focus areas",
         "selectedTitle": "Selected work",
         "selectedLead": "Interactive tools for students, a team-built communication system, and small apps that taught me how to ship.",
@@ -82,7 +82,7 @@
         "currentlyTitle": "Currently",
         "currently": [
             "MS in Computer Science at UC Davis (Fall 2026 to June 2028)",
-            "Developer on the Advanced track at AI Collective @ UC Davis",
+            "Developer on the Advanced Track at AI Collective (AIC) at UC Davis",
             "Learning deep learning with PyTorch and applying it to computer vision",
             "Learning how programming languages work by building with Rust"
         ],
@@ -134,7 +134,7 @@
         "photoAlt": "Portrait of Gary Alvarado",
         "intro": [
             "I'm Gary Alvarado, a Master's student in Computer Science at UC Davis. I started in Fall 2026 and expect to graduate in June 2028. I split my time between Davis and the Bay Area.",
-            "My bachelor's degree is in Business. I moved into tech through computer science coursework and found that what I enjoy most is building things people actually use, especially in education and health."
+            "My bachelor's degree is in Business Administration from Cal State East Bay. I moved into tech through upper-division computer science coursework there, and found that what I enjoy most is building things people actually use, especially in education and health."
         ],
         "researchTitle": "Research interests",
         "researchLead": "I'm most interested in the places where these areas overlap, especially where AI and robotics meet human-computer interaction.",
@@ -158,21 +158,56 @@
         ],
         "teachingTitle": "Teaching",
         "teaching": [
-            "I taught computer science at a Bay Area high school as a long-term substitute, including AP Computer Science Principles. Several of my students passed the AP exam.",
+            "From September 2024 to July 2025 I was the long-term substitute for AP Computer Science Principles and Computer Programming in the Hayward Unified School District, teaching 130+ students across five sections. Several of my students passed the AP exam.",
             "Teaching changed how I think about software. A good tool, like a good lesson, meets people where they are. That's why my projects lean toward study tools and clear interfaces."
         ],
-        "teachingLink": "See my students' class portfolio projects",
+        "teachingLink": "See the showcase of 70+ student projects I built",
+        "experienceTitle": "Experience",
+        "experience": [
+            {
+                "role": "Developer, Advanced Track",
+                "org": "AI Collective (AIC) at UC Davis",
+                "dates": "October 2026 to present",
+                "points": []
+            },
+            {
+                "role": "Long-term substitute teacher, AP Computer Science Principles and Computer Programming",
+                "org": "Hayward Unified School District",
+                "dates": "September 2024 to July 2025",
+                "points": [
+                    "Taught 130+ students across five sections, covering C++, JavaScript, HTML/CSS, networking, and data representation.",
+                    "Designed hands-on projects and lessons that prepared students for the AP CS exam and built problem-solving skills.",
+                    "Introduced students to industry tools, including GitHub and AI-assisted development."
+                ]
+            },
+            {
+                "role": "Substitute teacher (district-wide)",
+                "org": "Hayward Unified School District",
+                "dates": "2022 to present",
+                "points": [
+                    "Teach classes across grade levels and subjects, adapting to new classrooms and lesson plans every day."
+                ]
+            }
+        ],
         "educationTitle": "Education",
         "education": [
             {
                 "degree": "M.S. Computer Science",
                 "school": "University of California, Davis",
-                "dates": "Fall 2026 to June 2028 (expected)"
+                "dates": "Fall 2026 to June 2028 (expected)",
+                "details": "Graduate coursework: Computer Vision, Programming Languages"
             },
             {
-                "degree": "B.S. Business",
-                "school": "[PLACEHOLDER: university name]",
-                "dates": "[PLACEHOLDER: graduation year]"
+                "degree": "Upper-division Computer Science coursework",
+                "school": "California State University, East Bay",
+                "dates": "May 2025 to May 2026",
+                "details": "Software Engineering, Operating Systems, Computer Networks, Analysis of Algorithms, Artificial Intelligence, Computer Architecture, Programming Languages, Data Structures & Algorithms"
+            },
+            {
+                "degree": "B.S. Business Administration",
+                "school": "California State University, East Bay",
+                "dates": "Fall 2023",
+                "details": ""
             }
         ],
         "toolsTitle": "Tools I use",
@@ -183,7 +218,7 @@
             "learning": "Currently learning"
         },
         "locationTitle": "Based in",
-        "location": "The Bay Area and Davis, California",
+        "location": "The San Francisco Bay Area and Davis, California",
         "resumeCta": "Download my resume",
         "contactCta": "Get in touch"
     },
@@ -279,7 +314,6 @@
         "lead": "I'm open to research collaborations, internships, and conversations about AI, computer vision, and HCI. For a website project, the quote form on the Services page is the fastest route.",
         "formTitle": "Send a message",
         "elsewhereTitle": "Elsewhere",
-        "emailLabel": "Email",
         "githubLabel": "GitHub",
         "linkedinLabel": "LinkedIn",
         "resumeLabel": "Resume (PDF)",

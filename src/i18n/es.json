@@ -74,7 +74,7 @@
         "ctaWork": "Ver mis proyectos",
         "ctaHire": "Trabajemos juntos",
         "photoAlt": "Retrato de Gary Alvarado con traje oscuro, frente a un árbol de hojas verdes",
-        "location": "Área de la Bahía y Davis, California",
+        "location": "Área de la Bahía de San Francisco y Davis, California",
         "interestsLabel": "Áreas de interés",
         "selectedTitle": "Proyectos destacados",
         "selectedLead": "Herramientas interactivas para estudiantes, un sistema de comunicación hecho en equipo y aplicaciones pequeñas con las que aprendí a publicar proyectos de principio a fin.",
@@ -82,7 +82,7 @@
         "currentlyTitle": "Actualmente",
         "currently": [
             "Maestría en Ciencias de la Computación en UC Davis (otoño de 2026 a junio de 2028)",
-            "Desarrollador en el nivel avanzado de AI Collective @ UC Davis",
+            "Desarrollador en el nivel avanzado de AI Collective (AIC) en UC Davis",
             "Aprendiendo deep learning con PyTorch y aplicándolo a visión por computadora",
             "Aprendiendo cómo funcionan los lenguajes de programación construyendo con Rust"
         ],
@@ -134,7 +134,7 @@
         "photoAlt": "Retrato de Gary Alvarado",
         "intro": [
             "Soy Gary Alvarado y estudio la maestría en Ciencias de la Computación en UC Davis. Empecé en otoño de 2026 y espero graduarme en junio de 2028. Divido mi tiempo entre Davis y el Área de la Bahía.",
-            "Mi licenciatura es en Administración de Empresas. Llegué a la tecnología a través de cursos de computación y descubrí que lo que más disfruto es crear cosas que la gente realmente usa, sobre todo en educación y salud."
+            "Mi licenciatura es en Administración de Empresas, por Cal State East Bay. Llegué a la tecnología a través de cursos avanzados de computación en esa misma universidad y descubrí que lo que más disfruto es crear cosas que la gente realmente usa, sobre todo en educación y salud."
         ],
         "researchTitle": "Intereses de investigación",
         "researchLead": "Lo que más me interesa está en los puntos donde estas áreas se cruzan, en especial donde la IA y la robótica se encuentran con la interacción humano-computadora.",
@@ -158,21 +158,56 @@
         ],
         "teachingTitle": "Docencia",
         "teaching": [
-            "Di clases de computación en una preparatoria del Área de la Bahía como maestro suplente de largo plazo, incluido el curso AP Computer Science Principles. Varios de mis alumnos aprobaron el examen AP.",
+            "De septiembre de 2024 a julio de 2025 fui maestro suplente de largo plazo de AP Computer Science Principles y Programación de Computadoras en el Distrito Escolar Unificado de Hayward, con más de 130 alumnos en cinco grupos. Varios de mis alumnos aprobaron el examen AP.",
             "Enseñar cambió mi forma de ver el software. Una buena herramienta, como una buena clase, parte de donde está cada persona. Por eso mis proyectos se inclinan hacia las herramientas de estudio y las interfaces claras."
         ],
-        "teachingLink": "Ver los proyectos finales de mis alumnos",
+        "teachingLink": "Ver la galería que creé con más de 70 proyectos de mis alumnos",
+        "experienceTitle": "Experiencia",
+        "experience": [
+            {
+                "role": "Desarrollador, nivel avanzado",
+                "org": "AI Collective (AIC) en UC Davis",
+                "dates": "Octubre de 2026 a la fecha",
+                "points": []
+            },
+            {
+                "role": "Maestro suplente de largo plazo, AP Computer Science Principles y Programación de Computadoras",
+                "org": "Distrito Escolar Unificado de Hayward",
+                "dates": "Septiembre de 2024 a julio de 2025",
+                "points": [
+                    "Di clases a más de 130 alumnos en cinco grupos: C++, JavaScript, HTML/CSS, redes y representación de datos.",
+                    "Diseñé proyectos prácticos y clases que prepararon a los alumnos para el examen AP y fortalecieron su capacidad para resolver problemas.",
+                    "Les presenté herramientas de la industria, como GitHub y el desarrollo asistido por IA."
+                ]
+            },
+            {
+                "role": "Maestro suplente (en todo el distrito)",
+                "org": "Distrito Escolar Unificado de Hayward",
+                "dates": "2022 a la fecha",
+                "points": [
+                    "Imparto clases de distintos grados y materias, y me adapto cada día a nuevos grupos y planes de clase."
+                ]
+            }
+        ],
         "educationTitle": "Formación",
         "education": [
             {
                 "degree": "Maestría en Ciencias de la Computación",
                 "school": "Universidad de California, Davis",
-                "dates": "Otoño de 2026 a junio de 2028 (prevista)"
+                "dates": "Otoño de 2026 a junio de 2028 (prevista)",
+                "details": "Cursos de posgrado: Visión por Computadora, Lenguajes de Programación"
+            },
+            {
+                "degree": "Cursos avanzados de Ciencias de la Computación",
+                "school": "Universidad Estatal de California, East Bay",
+                "dates": "Mayo de 2025 a mayo de 2026",
+                "details": "Ingeniería de Software, Sistemas Operativos, Redes de Computadoras, Análisis de Algoritmos, Inteligencia Artificial, Arquitectura de Computadoras, Lenguajes de Programación, Estructuras de Datos y Algoritmos"
             },
             {
                 "degree": "Licenciatura en Administración de Empresas",
-                "school": "[PENDIENTE: nombre de la universidad]",
-                "dates": "[PENDIENTE: año de graduación]"
+                "school": "Universidad Estatal de California, East Bay",
+                "dates": "Otoño de 2023",
+                "details": ""
             }
         ],
         "toolsTitle": "Herramientas",
@@ -183,7 +218,7 @@
             "learning": "Aprendiendo ahora"
         },
         "locationTitle": "Ubicación",
-        "location": "El Área de la Bahía y Davis, California",
+        "location": "El Área de la Bahía de San Francisco y Davis, California",
         "resumeCta": "Descargar mi CV",
         "contactCta": "Escríbame"
     },
@@ -279,7 +314,6 @@
         "lead": "Estoy abierto a colaborar en investigación, a prácticas profesionales y a conversar sobre IA, visión por computadora y HCI. Si se trata de un sitio web, la forma más rápida es el formulario de cotización en la página de Servicios.",
         "formTitle": "Enviar un mensaje",
         "elsewhereTitle": "En otros sitios",
-        "emailLabel": "Correo",
         "githubLabel": "GitHub",
         "linkedinLabel": "LinkedIn",
         "resumeLabel": "CV (PDF)",

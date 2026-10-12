@@ -1,18 +1,18 @@
 {
     "title": "Communication System",
     "summary": {
-        "en": "A real-time, multi-user chat system in Java with a TCP socket server, a Swing desktop client, group and private chats, and an IT audit mode.",
-        "es": "Un sistema de chat multiusuario en tiempo real hecho en Java, con servidor de sockets TCP, cliente de escritorio en Swing, chats grupales y privados, y un modo de auditoría para TI."
+        "en": "A real-time, multi-user Java chat system built by a five-person team: a TCP socket server, a Swing desktop client, and group and private chats.",
+        "es": "Un sistema de chat multiusuario en tiempo real hecho en Java por un equipo de cinco personas: servidor de sockets TCP, cliente de escritorio en Swing y chats grupales y privados."
     },
     "problem": {
         "en": "A five-person software engineering team had to take a messaging system from requirements and design documents to working, tested code.",
         "es": "Un equipo de cinco personas en un curso de ingeniería de software tenía que llevar un sistema de mensajería desde los requisitos y el diseño hasta un código funcional y probado."
     },
     "solution": {
-        "en": "I worked on the client GUI, the server logic, the TCP/IP layer, and authentication. A browser demo recreates the client with sample data, so anyone can try it without installing Java.",
-        "es": "Trabajé en la interfaz del cliente, la lógica del servidor, la capa TCP/IP y la autenticación. Una demo en el navegador recrea el cliente con datos de ejemplo, para que cualquiera pueda probarlo sin instalar Java."
+        "en": "I built the networking foundation: TCP sockets, a thread-per-client server, and the message protocol and routing. I implemented login, account creation, group chats, and message delivery, connected them to the Swing GUI, and co-authored the requirements specification. A browser demo recreates the client with sample data.",
+        "es": "Construí la base de red: sockets TCP, un servidor con un hilo por cliente y el protocolo y enrutamiento de mensajes. Implementé el inicio de sesión, la creación de cuentas, los chats grupales y la entrega de mensajes, los conecté con la interfaz en Swing y fui coautor de la especificación de requisitos. Una demo en el navegador recrea el cliente con datos de ejemplo."
     },
-    "tags": ["Java", "Swing", "TCP/IP", "Authentication"],
+    "tags": ["Java", "TCP sockets", "Multithreading", "Swing"],
     "category": "live",
     "liveUrl": "https://denilson15.github.io/Modern-Communications-App/",
     "repoUrl": "https://github.com/Denilson15/Modern-Communications-App",

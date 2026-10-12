@@ -9,8 +9,8 @@
         "es": "Entender cómo se analiza y se evalúa un lenguaje, usando programación funcional en lugar de ciclos y mutación."
     },
     "solution": {
-        "en": "Reads a program file, parses a minimal instruction set (PUSH, POP, ADD, SUB, MUL, DIV, PRINT), and runs it on a stack-based VM, all in a single file.",
-        "es": "Lee un archivo de programa, analiza un conjunto mínimo de instrucciones (PUSH, POP, ADD, SUB, MUL, DIV, PRINT) y lo ejecuta en una máquina virtual basada en pila, todo en un solo archivo."
+        "en": "Parses a minimal instruction set (PUSH, POP, ADD, SUB, MUL, DIV, PRINT) and runs it on a stack-based VM, using recursion, pattern matching, and immutable data structures.",
+        "es": "Analiza un conjunto mínimo de instrucciones (PUSH, POP, ADD, SUB, MUL, DIV, PRINT) y lo ejecuta en una máquina virtual basada en pila, usando recursión, coincidencia de patrones y estructuras de datos inmutables."
     },
     "tags": ["OCaml", "Parsing", "Interpreters"],
     "category": "code",

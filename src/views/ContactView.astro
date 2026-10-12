@@ -28,15 +28,7 @@ const links: {
     value: string;
     href: string;
     external?: boolean;
-    placeholder?: boolean;
 }[] = [
-    {
-        icon: "mail",
-        label: t("contact.emailLabel"),
-        value: site.email,
-        href: `mailto:${site.email}`,
-        placeholder: site.emailIsPlaceholder,
-    },
     {
         icon: "github",
         label: t("contact.githubLabel"),
@@ -136,16 +128,8 @@ const links: {
                                 </span>
                                 <span class="min-w-0">
                                     <span class="block text-sm text-ink-muted">{link.label}</span>
-                                    <span
-                                        class:list={[
-                                            "block truncate font-semibold group-hover:text-accent",
-                                            link.placeholder &&
-                                                "rounded bg-warn-bg px-1.5 text-warn-ink",
-                                        ]}
-                                    >
-                                        {link.placeholder
-                                            ? `[${t("common.placeholder")}] ${link.value}`
-                                            : link.value}
+                                    <span class="block truncate font-semibold group-hover:text-accent">
+                                        {link.value}
                                     </span>
                                 </span>
                                 {link.external && (

@@ -86,7 +86,7 @@ const sectionLead = "mt-2 text-ink-muted";
                 {t("projects.sections.code")}
             </h2>
             <p class={sectionLead}>{t("projects.sections.codeLead")}</p>
-            <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div class="mt-8 grid gap-6 md:grid-cols-2">
                 {code.map((project) => (
                     <ProjectCard project={project} lang={lang} variant="compact" details />
                 ))}

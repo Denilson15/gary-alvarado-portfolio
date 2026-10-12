@@ -18,7 +18,6 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const dict = getDictionary(lang);
 const toolGroups = Object.keys(tools) as (keyof typeof tools)[];
-const isPlaceholder = (text: string) => /^\[(PLACEHOLDER|PENDIENTE)/.test(text);
 ---
 
 <BaseLayout
@@ -121,6 +120,35 @@ const isPlaceholder = (text: string) => /^\[(PLACEHOLDER|PENDIENTE)/.test(text);
         </div>
     </section>
 
+    <section
+        class="container-page grid gap-10 pt-24 lg:grid-cols-[1fr_1.4fr]"
+        aria-labelledby="experience-heading"
+    >
+        <h2
+            id="experience-heading"
+            class="text-3xl font-medium tracking-tight sm:text-4xl"
+            data-reveal
+        >
+            {t("about.experienceTitle")}
+        </h2>
+        <ol class="space-y-8">
+            {dict.about.experience.map((item) => (
+                <li class="border-l-2 border-accent pl-5" data-reveal>
+                    <p class="text-sm text-ink-muted">{item.dates}</p>
+                    <h3 class="mt-1 font-sans text-lg font-semibold text-ink">{item.role}</h3>
+                    <p class="text-ink-muted">{item.org}</p>
+                    {item.points.length > 0 && (
+                        <ul class="mt-3 list-disc space-y-1.5 pl-5 leading-relaxed text-ink-muted marker:text-accent">
+                            {item.points.map((point) => (
+                                <li>{point}</li>
+                            ))}
+                        </ul>
+                    )}
+                </li>
+            ))}
+        </ol>
+    </section>
+
     <section class="container-page grid gap-6 pt-24 lg:grid-cols-2">
         <div class="rounded-3xl border border-line bg-surface p-7 sm:p-9" data-reveal>
             <h2 class="text-2xl font-medium tracking-tight">{t("about.educationTitle")}</h2>
@@ -128,26 +156,13 @@ const isPlaceholder = (text: string) => /^\[(PLACEHOLDER|PENDIENTE)/.test(text);
                 {dict.about.education.map((item) => (
                     <li class="border-l-2 border-accent pl-5">
                         <p class="font-semibold text-ink">{item.degree}</p>
-                        <p
-                            class:list={[
-                                "mt-1",
-                                isPlaceholder(item.school)
-                                    ? "inline-block rounded bg-warn-bg px-1.5 text-warn-ink"
-                                    : "text-ink-muted",
-                            ]}
-                        >
-                            {item.school}
-                        </p>
-                        <p
-                            class:list={[
-                                "mt-1 text-sm",
-                                isPlaceholder(item.dates)
-                                    ? "inline-block rounded bg-warn-bg px-1.5 text-warn-ink"
-                                    : "text-ink-muted",
-                            ]}
-                        >
-                            {item.dates}
-                        </p>
+                        <p class="mt-1 text-ink-muted">{item.school}</p>
+                        <p class="mt-1 text-sm text-ink-muted">{item.dates}</p>
+                        {item.details && (
+                            <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+                                {item.details}
+                            </p>
+                        )}
                     </li>
                 ))}
             </ol>

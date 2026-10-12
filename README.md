@@ -28,7 +28,7 @@ src/
     components/             Small reusable pieces: Header, ProjectCard, FormField, …
     content/projects/       One JSON file per project
     content.config.ts       Schema for project files
-    data/site.ts            Email, GitHub, LinkedIn, resume link, tools list
+    data/site.ts            GitHub, LinkedIn, resume link, tools list
     data/projects.json      Raw GitHub discovery output (reference only; not rendered)
     i18n/en.json, es.json   Every UI string, in both languages
     i18n/routes.ts          Maps each page to its English and Spanish URL
@@ -104,8 +104,13 @@ The language toggle and hreflang tags use the route map, so they keep visitors o
 
 ## Personal details
 
-Edit `src/data/site.ts` for your email, GitHub, LinkedIn, resume link, and the tools listed on the About page.
-Put your resume at `public/resume.pdf`.
+Edit `src/data/site.ts` for your GitHub, LinkedIn, resume link, and the tools listed on the About page.
+
+Your email address is intentionally **not** shown on the site, to keep it away from spam scrapers. Visitors write to
+you through the contact and quote forms, which Netlify forwards to your inbox. Recruiters can also find your email in the resume.
+
+`public/resume.pdf` is the public copy of your resume. Its phone number is removed and its location reads "San Francisco
+Bay Area". When you update your resume, export a new PDF without the phone number and replace this file.
 
 The portrait is `src/assets/gary-alvarado.jpg`. To replace it, swap the file and keep the same name. A 4:5 crop
 works best. The social preview images (`public/og-en.jpg`, `public/og-es.jpg`) are 1200 × 630.
@@ -134,19 +139,15 @@ Every push to `main` redeploys the site.
 
 ## To fill in
 
-Search the code for `PLACEHOLDER` or `PENDIENTE` to find each spot.
+Search the code for `PLACEHOLDER` or `PENDIENTE` to find the remaining text placeholders.
 
-- [ ] **Email**: `src/data/site.ts` (`email`), then set `emailIsPlaceholder` to `false`
-- [ ] **Resume**: add `public/resume.pdf`
-- [ ] **Bachelor's degree**: university name and graduation year in `about.education` (both translation files)
 - [ ] **Pricing**: `services.pricingBody` in both translation files
 - [ ] **Testimonials**: `services.testimonialsBody`, with real quotes used with permission (or remove the block from `src/views/ServicesView.astro`)
 - [ ] **Screenshots** for every project except the Communication System (see "Add a project")
 - [ ] **Check the live links**: none of the live URLs could be load-tested from the build environment
 - [ ] **Tenzies**: add a `liveUrl` if it's deployed, and confirm the description matches the game
 - [ ] **PT Anatomy Atlas**: add a `liveUrl` once GitHub Pages is turned on for `/docs`
-- [ ] **AI Collective @ UC Davis**: confirm the "Advanced track developer" line on the home page (taken from your GitHub profile)
 - [ ] **Client permission**: confirm Braulio (Diamond Lens) and your family member are happy to be listed
 - [ ] **Spanish review**: have a native speaker read the project blurbs and the Services page
 - [ ] **Site URL**: `astro.config.mjs` and `public/robots.txt` once the domain is set
-- [ ] **Netlify Forms**: turn on form detection and email notifications
+- [ ] **Netlify Forms**: turn on form detection and email notifications (this is how messages reach you)
