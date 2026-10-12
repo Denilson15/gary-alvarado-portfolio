@@ -1,18 +1,18 @@
 {
     "title": "Dream Party Decor",
     "summary": {
-        "en": "A contact page for a family member's event decoration business.",
-        "es": "Una página de contacto para el negocio de decoración de eventos de un familiar."
+        "en": "A marketing website for a family member's event decoration business in the Bay Area and Central Valley.",
+        "es": "Un sitio web comercial para el negocio de decoración de eventos de un familiar en el Área de la Bahía y el Valle Central."
     },
     "problem": {
-        "en": "The business needed a simple way for new clients to reach out and share their event details.",
-        "es": "El negocio necesitaba una forma sencilla para que los nuevos clientes se comunicaran y compartieran los detalles de su evento."
+        "en": "The business needed one place to show its balloon garlands, backdrops, and party rentals, and to make booking easy without a back end.",
+        "es": "El negocio necesitaba un solo lugar para mostrar sus arcos de globos, fondos decorativos y artículos de renta, y facilitar las reservaciones sin un servidor propio."
     },
     "solution": {
-        "en": "A responsive contact page where clients send event details directly, built by hand on top of a Scrimba baseline design.",
-        "es": "Una página de contacto adaptable donde los clientes envían directamente los detalles de su evento, construida a mano a partir de un diseño base de Scrimba."
+        "en": "A static Astro site with services and starting prices, a gallery, a how-it-works section, and an FAQ. Its booking form builds a ready-to-send message with an estimated total that visitors send by text, Instagram DM, or email. Content is edited from simple data files.",
+        "es": "Un sitio estático en Astro con servicios y precios iniciales, galería, una sección de cómo funciona y preguntas frecuentes. Su formulario de reservación arma un mensaje listo para enviar, con un total estimado, que el visitante manda por mensaje de texto, Instagram o correo. El contenido se edita desde archivos de datos sencillos."
     },
-    "tags": ["HTML", "CSS", "JavaScript", "Netlify"],
+    "tags": ["Astro", "Tailwind CSS", "TypeScript", "Netlify"],
     "category": "client",
     "liveUrl": "https://dreampartydecor.netlify.app/",
     "repoUrl": "https://github.com/Denilson15/dream-party-decor-webapge",
