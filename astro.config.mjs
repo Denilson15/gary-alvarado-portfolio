@@ -20,6 +20,7 @@ export default defineConfig({
     integrations: [
         react(),
         sitemap({
+            filter: (page) => !/\/(404|thanks|gracias)\/?$/.test(new URL(page).pathname),
             i18n: {
                 defaultLocale: "en",
                 locales: {

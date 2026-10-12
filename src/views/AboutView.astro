@@ -1,0 +1,172 @@
+---
+import { Image } from "astro:assets";
+import type { Lang } from "@/i18n/config";
+import { getPath } from "@/i18n/routes";
+import { getDictionary, useTranslations } from "@/i18n/utils";
+import { site, tools } from "@/data/site";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/Button.astro";
+import Icon from "@/components/Icon.astro";
+import TagList from "@/components/TagList.astro";
+import portrait from "@/assets/gary-alvarado.jpg";
+
+interface Props {
+    lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const dict = getDictionary(lang);
+const toolGroups = Object.keys(tools) as (keyof typeof tools)[];
+const isPlaceholder = (text: string) => /^\[(PLACEHOLDER|PENDIENTE)/.test(text);
+---
+
+<BaseLayout
+    lang={lang}
+    routeId="about"
+    title={t("meta.about.title")}
+    description={t("meta.about.description")}
+>
+    <section class="container-page grid gap-12 pt-12 sm:pt-16 md:grid-cols-[1.4fr_1fr] lg:gap-20 lg:pt-24">
+        <div>
+            <p class="eyebrow">{t("about.eyebrow")}</p>
+            <h1 class="mt-5 text-4xl leading-[1.1] font-medium tracking-tight sm:text-5xl lg:text-6xl">
+                {t("about.title")}
+            </h1>
+            <div class="mt-8 space-y-5 text-lg leading-relaxed text-ink-muted">
+                {dict.about.intro.map((paragraph) => (
+                    <p>{paragraph}</p>
+                ))}
+            </div>
+            <div class="mt-8 flex flex-wrap gap-3">
+                <Button href={site.resume}>
+                    <Icon name="file" class="size-4" />
+                    {t("about.resumeCta")}
+                </Button>
+                <Button href={getPath("contact", lang)} variant="secondary">
+                    {t("about.contactCta")}
+                </Button>
+            </div>
+        </div>
+        <div class="md:pt-10">
+            <Image
+                src={portrait}
+                alt={t("about.photoAlt")}
+                widths={[360, 560, 800]}
+                sizes="(min-width: 768px) 35vw, 90vw"
+                loading="eager"
+                class="mx-auto aspect-[4/5] w-full max-w-sm rounded-[2rem] object-cover md:max-w-none"
+            />
+            <p class="mt-4 flex items-center justify-center gap-2 text-sm text-ink-muted md:justify-start">
+                <Icon name="map-pin" class="size-4 text-accent" />
+                <span>
+                    <span class="sr-only">{t("about.locationTitle")}: </span>
+                    {t("about.location")}
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <section class="container-page pt-24" aria-labelledby="research-heading">
+        <div class="max-w-3xl" data-reveal>
+            <h2 id="research-heading" class="text-3xl font-medium tracking-tight sm:text-4xl">
+                {t("about.researchTitle")}
+            </h2>
+            <p class="mt-4 text-lg leading-relaxed text-ink-muted">{t("about.researchLead")}</p>
+        </div>
+        <ul class="mt-10 grid gap-4 sm:grid-cols-2">
+            {dict.about.research.map((item, index) => (
+                <li
+                    class="rounded-3xl border border-line bg-surface p-7"
+                    data-reveal
+                    style={`--reveal-delay: ${index * 80}ms`}
+                >
+                    <p class="font-mono text-xs text-accent" aria-hidden="true">
+                        0{index + 1}
+                    </p>
+                    <h3 class="mt-3 text-xl font-medium tracking-tight">{item.title}</h3>
+                    <p class="mt-2 leading-relaxed text-ink-muted">{item.body}</p>
+                </li>
+            ))}
+        </ul>
+    </section>
+
+    <section
+        class="container-page grid gap-10 pt-24 lg:grid-cols-[1fr_1.4fr]"
+        aria-labelledby="teaching-heading"
+    >
+        <h2
+            id="teaching-heading"
+            class="text-3xl font-medium tracking-tight sm:text-4xl"
+            data-reveal
+        >
+            {t("about.teachingTitle")}
+        </h2>
+        <div class="space-y-5 text-lg leading-relaxed text-ink-muted" data-reveal>
+            {dict.about.teaching.map((paragraph) => (
+                <p>{paragraph}</p>
+            ))}
+            <p>
+                <a
+                    href={site.studentPortfolios}
+                    class="link inline-flex items-center gap-1.5"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    {t("about.teachingLink")}
+                    <span class="sr-only">{t("a11y.opensInNewTab")}</span>
+                    <Icon name="arrow-up-right" class="size-4" />
+                </a>
+            </p>
+        </div>
+    </section>
+
+    <section class="container-page grid gap-6 pt-24 lg:grid-cols-2">
+        <div class="rounded-3xl border border-line bg-surface p-7 sm:p-9" data-reveal>
+            <h2 class="text-2xl font-medium tracking-tight">{t("about.educationTitle")}</h2>
+            <ol class="mt-6 space-y-6">
+                {dict.about.education.map((item) => (
+                    <li class="border-l-2 border-accent pl-5">
+                        <p class="font-semibold text-ink">{item.degree}</p>
+                        <p
+                            class:list={[
+                                "mt-1",
+                                isPlaceholder(item.school)
+                                    ? "inline-block rounded bg-warn-bg px-1.5 text-warn-ink"
+                                    : "text-ink-muted",
+                            ]}
+                        >
+                            {item.school}
+                        </p>
+                        <p
+                            class:list={[
+                                "mt-1 text-sm",
+                                isPlaceholder(item.dates)
+                                    ? "inline-block rounded bg-warn-bg px-1.5 text-warn-ink"
+                                    : "text-ink-muted",
+                            ]}
+                        >
+                            {item.dates}
+                        </p>
+                    </li>
+                ))}
+            </ol>
+        </div>
+
+        <div class="rounded-3xl border border-line bg-surface p-7 sm:p-9" data-reveal>
+            <h2 class="text-2xl font-medium tracking-tight">{t("about.toolsTitle")}</h2>
+            <dl class="mt-6 space-y-5">
+                {toolGroups.map((group) => (
+                    <div>
+                        <dt class="mb-2 text-sm font-semibold text-ink">
+                            {t(`about.toolsGroups.${group}`)}
+                        </dt>
+                        <dd>
+                            <TagList tags={tools[group]} />
+                        </dd>
+                    </div>
+                ))}
+            </dl>
+        </div>
+    </section>
+</BaseLayout>

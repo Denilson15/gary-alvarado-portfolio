@@ -1,0 +1,117 @@
+---
+import type { Lang } from "@/i18n/config";
+import { getPath } from "@/i18n/routes";
+import { useTranslations } from "@/i18n/utils";
+
+/**
+ * Wraps fields in a Netlify Forms form. Netlify finds the form in the built HTML,
+ * so no backend is needed. Submissions show up in the Netlify dashboard under Forms.
+ */
+interface Props {
+    lang: Lang;
+    name: string;
+    submitLabel: string;
+    class?: string;
+}
+
+const { lang, name, submitLabel, class: className } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<form
+    name={name}
+    method="POST"
+    action={getPath("thanks", lang)}
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    novalidate
+    data-validate
+    data-error-required={t("form.errors.required")}
+    data-error-email={t("form.errors.email")}
+    data-sending={t("form.sending")}
+    class:list={["grid gap-5", className]}
+>
+    <input type="hidden" name="form-name" value={name} />
+    <input type="hidden" name="language" value={lang} />
+    <p class="sr-only" aria-hidden="true">
+        <label>
+            {t("form.honeypot")}
+            <input name="bot-field" tabindex="-1" autocomplete="off" />
+        </label>
+    </p>
+
+    <div
+        class="rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm font-medium text-red-800 dark:border-red-900 dark:bg-red-950 dark:text-red-200"
+        role="alert"
+        data-error-summary
+        hidden
+    >
+        {t("form.errorSummary")}
+    </div>
+
+    <slot />
+
+    <p class="text-sm text-ink-muted">
+        <span class="text-accent" aria-hidden="true">
+            *
+        </span>{" "}
+        {t("form.required")}
+    </p>
+    <div>
+        <button
+            type="submit"
+            class="inline-flex min-h-12 items-center justify-center rounded-full bg-accent px-6 py-3 text-base font-semibold text-accent-ink transition-colors hover:bg-accent-strong disabled:opacity-70"
+        >
+            {submitLabel}
+        </button>
+    </div>
+</form>
+
+<script>
+    // Accessible client-side validation. The form still submits normally to Netlify.
+    for (const form of document.querySelectorAll<HTMLFormElement>("form[data-validate]")) {
+        const summary = form.querySelector<HTMLElement>("[data-error-summary]");
+        const controls = form.querySelectorAll<
+            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >("[data-field] input, [data-field] textarea, [data-field] select");
+
+        const messageFor = (control: (typeof controls)[number]) => {
+            if (control.validity.valueMissing) return form.dataset.errorRequired ?? "";
+            if (control.validity.typeMismatch) return form.dataset.errorEmail ?? "";
+            return "";
+        };
+
+        const check = (control: (typeof controls)[number]) => {
+            const error = document.getElementById(`${control.id}-error`);
+            const message = messageFor(control);
+            control.setAttribute("aria-invalid", message ? "true" : "false");
+            if (error) {
+                error.textContent = message;
+                error.hidden = !message;
+            }
+            return !message;
+        };
+
+        controls.forEach((control) =>
+            control.addEventListener("blur", () => {
+                if (control.getAttribute("aria-invalid") === "true") check(control);
+            }),
+        );
+
+        form.addEventListener("submit", (event) => {
+            const invalid = [...controls].filter((control) => !check(control));
+            if (invalid.length > 0) {
+                event.preventDefault();
+                if (summary) summary.hidden = false;
+                invalid[0]?.focus();
+                return;
+            }
+            if (summary) summary.hidden = true;
+            const button = form.querySelector<HTMLButtonElement>("button[type=submit]");
+            if (button) {
+                button.disabled = true;
+                button.textContent = form.dataset.sending ?? button.textContent;
+            }
+        });
+    }
+</script>

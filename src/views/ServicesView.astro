@@ -1,0 +1,237 @@
+---
+import type { Lang } from "@/i18n/config";
+import { getDictionary, useTranslations } from "@/i18n/utils";
+import { getProjectsByCategory } from "@/lib/projects";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Button from "@/components/Button.astro";
+import FormField from "@/components/FormField.astro";
+import Icon from "@/components/Icon.astro";
+import NetlifyForm from "@/components/NetlifyForm.astro";
+import Placeholder from "@/components/Placeholder.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+
+interface Props {
+    lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const dict = getDictionary(lang);
+const clientWork = await getProjectsByCategory("client");
+
+const offerIcons = ["arrow-right", "globe", "code", "file"] as const;
+const typeOptions = Object.entries(dict.services.form.typeOptions).map(([value, label]) => ({
+    value,
+    label,
+}));
+const languageOptions = Object.entries(dict.services.form.languageOptions).map(
+    ([value, label]) => ({ value, label }),
+);
+---
+
+<BaseLayout
+    lang={lang}
+    routeId="services"
+    title={t("meta.services.title")}
+    description={t("meta.services.description")}
+>
+    <section class="container-page pt-12 sm:pt-16 lg:pt-24">
+        <SectionHeading
+            level={1}
+            eyebrow={t("services.eyebrow")}
+            title={t("services.title")}
+            lead={t("services.lead")}
+        />
+        <div class="mt-8 flex flex-wrap gap-3" data-reveal>
+            <Button href="#quote">
+                {t("services.ctaQuote")}
+                <Icon name="arrow-right" class="size-4" />
+            </Button>
+            <Button href="#work" variant="secondary">
+                {t("services.ctaWork")}
+            </Button>
+        </div>
+    </section>
+
+    <section class="container-page pt-24" aria-labelledby="offer-heading">
+        <h2 id="offer-heading" class="text-3xl font-medium tracking-tight sm:text-4xl" data-reveal>
+            {t("services.offerTitle")}
+        </h2>
+        <ul class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {dict.services.offers.map((offer, index) => (
+                <li
+                    class="flex flex-col rounded-3xl border border-line bg-surface p-7"
+                    data-reveal
+                    style={`--reveal-delay: ${index * 80}ms`}
+                >
+                    <span class="inline-flex size-11 items-center justify-center rounded-2xl bg-accent-soft text-accent-strong dark:text-accent">
+                        <Icon name={offerIcons[index] ?? "globe"} />
+                    </span>
+                    <h3 class="mt-5 text-xl font-medium tracking-tight">{offer.title}</h3>
+                    <p class="mt-2 leading-relaxed text-ink-muted">{offer.body}</p>
+                </li>
+            ))}
+        </ul>
+
+        <div class="mt-6 rounded-3xl bg-accent-soft p-7 sm:p-9" data-reveal>
+            <h3 class="text-xl font-medium tracking-tight">{t("services.includedTitle")}</h3>
+            <ul class="mt-5 grid gap-3 sm:grid-cols-2">
+                {dict.services.included.map((item) => (
+                    <li class="flex gap-3 leading-relaxed text-ink">
+                        <svg
+                            class="mt-1 size-5 shrink-0 text-accent-strong dark:text-accent"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                        >
+                            <path d="m5 12 5 5 9-10" />
+                        </svg>
+                        {item}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    </section>
+
+    {clientWork.length > 0 && (
+        <section id="work" class="container-page pt-24" aria-labelledby="work-heading">
+            <SectionHeading
+                id="work-heading"
+                title={t("services.workTitle")}
+                lead={t("services.workLead")}
+            />
+            <div class="mt-10 grid gap-6 lg:grid-cols-2">
+                {clientWork.map((project) => (
+                    <ProjectCard project={project} lang={lang} />
+                ))}
+            </div>
+        </section>
+    )}
+
+    <section class="container-page pt-24" aria-labelledby="process-heading">
+        <h2
+            id="process-heading"
+            class="text-3xl font-medium tracking-tight sm:text-4xl"
+            data-reveal
+        >
+            {t("services.processTitle")}
+        </h2>
+        <ol class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {dict.services.process.map((step, index) => (
+                <li
+                    class="relative rounded-3xl border border-line bg-surface p-7"
+                    data-reveal
+                    style={`--reveal-delay: ${index * 80}ms`}
+                >
+                    <span class="font-display text-5xl font-medium text-accent" aria-hidden="true">
+                        {index + 1}
+                    </span>
+                    <h3 class="mt-4 text-xl font-medium tracking-tight">{step.title}</h3>
+                    <p class="mt-2 leading-relaxed text-ink-muted">{step.body}</p>
+                </li>
+            ))}
+        </ol>
+    </section>
+
+    <section class="container-page grid gap-6 pt-24 lg:grid-cols-2">
+        <div data-reveal>
+            <h2 class="text-2xl font-medium tracking-tight">{t("services.pricingTitle")}</h2>
+            <Placeholder label={t("common.placeholder")} class="mt-4">
+                {t("services.pricingBody")}
+            </Placeholder>
+        </div>
+        <div data-reveal>
+            <h2 class="text-2xl font-medium tracking-tight">{t("services.testimonialsTitle")}</h2>
+            <Placeholder label={t("common.placeholder")} class="mt-4">
+                {t("services.testimonialsBody")}
+            </Placeholder>
+        </div>
+    </section>
+
+    <section id="quote" class="container-page pt-24" aria-labelledby="quote-heading">
+        <div class="grid gap-10 rounded-[2rem] border border-line bg-surface p-6 sm:p-10 lg:grid-cols-[1fr_1.5fr] lg:p-14">
+            <div>
+                <h2 id="quote-heading" class="text-3xl font-medium tracking-tight sm:text-4xl">
+                    {t("services.formTitle")}
+                </h2>
+                <p class="mt-4 text-lg leading-relaxed text-ink-muted">{t("services.formLead")}</p>
+            </div>
+            <NetlifyForm lang={lang} name="quote" submitLabel={t("services.form.submit")}>
+                <div class="grid gap-5 sm:grid-cols-2">
+                    <FormField
+                        lang={lang}
+                        form="quote"
+                        name="name"
+                        label={t("services.form.name")}
+                        autocomplete="name"
+                        required
+                    />
+                    <FormField
+                        lang={lang}
+                        form="quote"
+                        name="email"
+                        type="email"
+                        label={t("services.form.email")}
+                        autocomplete="email"
+                        required
+                    />
+                </div>
+                <FormField
+                    lang={lang}
+                    form="quote"
+                    name="business"
+                    label={t("services.form.business")}
+                    autocomplete="organization"
+                />
+                <div class="grid gap-5 sm:grid-cols-2">
+                    <FormField
+                        lang={lang}
+                        form="quote"
+                        name="project-type"
+                        type="select"
+                        label={t("services.form.type")}
+                        options={typeOptions}
+                        required
+                    />
+                    <FormField
+                        lang={lang}
+                        form="quote"
+                        name="site-language"
+                        type="select"
+                        label={t("services.form.language")}
+                        options={languageOptions}
+                    />
+                </div>
+                <div class="grid gap-5 sm:grid-cols-2">
+                    <FormField
+                        lang={lang}
+                        form="quote"
+                        name="current-site"
+                        type="url"
+                        label={t("services.form.currentSite")}
+                        autocomplete="url"
+                    />
+                    <FormField
+                        lang={lang}
+                        form="quote"
+                        name="timeline"
+                        label={t("services.form.timeline")}
+                    />
+                </div>
+                <FormField
+                    lang={lang}
+                    form="quote"
+                    name="message"
+                    type="textarea"
+                    label={t("services.form.message")}
+                    required
+                />
+            </NetlifyForm>
+        </div>
+    </section>
+</BaseLayout>
