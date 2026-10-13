@@ -94,11 +94,11 @@
             "primaryLanguage": "JavaScript",
             "topics": null,
             "homepage": null,
-            "githubPages": null,
-            "liveUrl": null,
-            "liveStatus": null,
+            "githubPages": true,
+            "liveUrl": "https://denilson15.github.io/Anatomy-Visualization-Tool/",
+            "liveStatus": "confirmed by Gary (2026-10-13)",
             "suggestedCategory": "in-progress",
-            "note": "README describes GitHub Pages from /docs; URL not confirmed"
+            "note": "GitHub Pages serves /docs"
         },
         {
             "name": "diamond-lens",

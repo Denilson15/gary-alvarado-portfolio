@@ -162,7 +162,6 @@ Every push to `main` redeploys the site.
 - [ ] **Screenshots** for every project except the Communication System (see "Add a project")
 - [ ] **Check the live links**: none of the live URLs could be load-tested from the build environment
 - [ ] **Tenzies**: add a `liveUrl` if it's deployed, and confirm the description matches the game
-- [ ] **PT Anatomy Atlas**: add a `liveUrl` once GitHub Pages is turned on for `/docs`
 - [ ] **Client permission**: confirm Braulio (Diamond Lens) and your family member are happy to be listed
 - [ ] **Spanish review**: have a native speaker read the project blurbs and the Services page
 - [ ] **Site URL**: `astro.config.mjs` and `public/robots.txt` once the domain is set
