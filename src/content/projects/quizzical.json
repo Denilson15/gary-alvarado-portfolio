@@ -17,6 +17,11 @@
     "year": 2026,
     "liveUrl": "https://quizzical-trivia-knowledge.netlify.app/",
     "repoUrl": "https://github.com/Denilson15/quizzical",
+    "image": "../../assets/projects/quizzical.jpg",
+    "video": {
+        "mp4": "/projects/quizzical.mp4",
+        "webm": "/projects/quizzical.webm"
+    },
     "hue": 32,
     "featured": true,
     "order": 3

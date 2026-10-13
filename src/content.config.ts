@@ -29,6 +29,17 @@ const projects = defineCollection({
             repoUrl: z.url().optional(),
             /** Screenshot next to this file's image folder, e.g. "../../assets/projects/name.png". */
             image: image().optional(),
+            /**
+             * Optional looping preview video (muted, no audio needed) shown instead of the image
+             * in the large project rows. Files live in public/, e.g. "/projects/my-project.mp4".
+             * Keep `image` set too: it is the poster frame and the fallback.
+             */
+            video: z
+                .object({
+                    mp4: z.string(),
+                    webm: z.string().optional(),
+                })
+                .optional(),
             /** Accent hue (0 to 360) for the generated preview used when there is no screenshot. */
             hue: z.number().min(0).max(360).default(172),
             team: z.boolean().default(false),

@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import type { Lang } from "@/i18n/config";
 import { localized, useTranslations } from "@/i18n/utils";
 import type { Project } from "@/lib/projects";
@@ -38,6 +38,13 @@ const newTab = t("a11y.opensInNewTab");
 const primaryUrl = data.liveUrl ?? data.repoUrl;
 const headingId = `project-${project.id}`;
 const label = String(number).padStart(2, "0");
+// A project with a `video` plays it in place of the screenshot; the image becomes its poster frame.
+const poster =
+    data.video && data.image
+        ? (await getImage({ src: data.image, width: 1280, format: "webp" })).src
+        : undefined;
+const mediaClass =
+    "h-full w-full object-cover object-top transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.03]";
 ---
 
 <article
@@ -56,14 +63,28 @@ const label = String(number).padStart(2, "0");
             reverse && "lg:order-2",
         ]}
     >
-        {data.image ? (
+        {data.video && poster ? (
+            <video
+                class={mediaClass}
+                poster={poster}
+                muted
+                loop
+                playsinline
+                preload="none"
+                disablepictureinpicture
+                data-preview-video
+            >
+                <source src={data.video.mp4} type="video/mp4" />
+                {data.video.webm && <source src={data.video.webm} type="video/webm" />}
+            </video>
+        ) : data.image ? (
             <Image
                 src={data.image}
                 alt=""
                 widths={[560, 900, 1300]}
                 sizes="(min-width: 1024px) 680px, 100vw"
                 loading={eager ? "eager" : "lazy"}
-                class="h-full w-full object-cover object-top transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.03]"
+                class={mediaClass}
             />
         ) : (
             <ProjectPreview title={data.title} hue={data.hue} />
@@ -141,3 +162,30 @@ const label = String(number).padStart(2, "0");
         </div>
     </div>
 </article>
+
+<script>
+    // Preview videos play only while on screen, and never for visitors who prefer reduced
+    // motion (they see the poster frame). Nothing downloads until a video scrolls into view.
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const videos = document.querySelectorAll<HTMLVideoElement>("video[data-preview-video]");
+    if (videos.length > 0 && "IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                for (const entry of entries) {
+                    const video = entry.target as HTMLVideoElement;
+                    if (entry.isIntersecting && !reduceMotion.matches) {
+                        video.muted = true;
+                        video.play().catch(() => {});
+                    } else {
+                        video.pause();
+                    }
+                }
+            },
+            { threshold: 0.35 },
+        );
+        videos.forEach((video) => observer.observe(video));
+        reduceMotion.addEventListener("change", () => {
+            if (reduceMotion.matches) videos.forEach((video) => video.pause());
+        });
+    }
+</script>

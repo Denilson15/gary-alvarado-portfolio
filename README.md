@@ -72,17 +72,22 @@ src/
 
 Field notes:
 
-| Field                            | Notes                                                                                               |
-| -------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `summary`, `problem`, `solution` | `en` is required. If `es` is missing, the Spanish site shows the English text.                      |
-| `category`                       | `live`, `client`, `code`, or `in-progress`. Each one is its own section on the Projects page.       |
-| `image`                          | Optional screenshot in `src/assets/projects/`. Without one, a dark preview with the title is shown. |
-| `hue`                            | Glow color (0 to 360) of that preview.                                                              |
-| `year`                           | Shown in the "More work" index, e.g. `2026`.                                                        |
-| `team`                           | `true` adds a "Team project" badge.                                                                 |
-| `featured`                       | `true` shows it under "Selected work" on the home page (the first 3 are used).                      |
-| `order`                          | Sort order inside its category. Lower numbers come first.                                           |
-| `visible`                        | `false` hides it without deleting the file.                                                         |
+| Field                            | Notes                                                                                                                                                                                                        |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `summary`, `problem`, `solution` | `en` is required. If `es` is missing, the Spanish site shows the English text.                                                                                                                               |
+| `category`                       | `live`, `client`, `code`, or `in-progress`. Each one is its own section on the Projects page.                                                                                                                |
+| `image`                          | Optional screenshot in `src/assets/projects/`. Without one, a dark preview with the title is shown.                                                                                                          |
+| `hue`                            | Glow color (0 to 360) of that preview.                                                                                                                                                                       |
+| `video`                          | Optional looping preview, e.g. `{ "mp4": "/projects/x.mp4", "webm": "/projects/x.webm" }` (files in `public/projects/`). Shown instead of the image in the large rows; keep `image` set as its poster frame. |
+| `year`                           | Shown in the "More work" index, e.g. `2026`.                                                                                                                                                                 |
+| `team`                           | `true` adds a "Team project" badge.                                                                                                                                                                          |
+| `featured`                       | `true` shows it under "Selected work" on the home page (the first 3 are used).                                                                                                                               |
+| `order`                          | Sort order inside its category. Lower numbers come first.                                                                                                                                                    |
+| `visible`                        | `false` hides it without deleting the file.                                                                                                                                                                  |
+
+**Preview videos:** keep them short (10–15 s), silent and seamless. Encode a 1280-wide H.264 MP4 with
+`-movflags +faststart` (and optionally a VP9 WebM). They only download and play once the row is on screen,
+and visitors who prefer reduced motion see the poster image instead.
 
 **Screenshots:** take them at 1440 × 900 (16:10 works best), save them as PNG or JPG in
 `src/assets/projects/`, and add the `image` field. Astro resizes and converts them to WebP when it builds.
