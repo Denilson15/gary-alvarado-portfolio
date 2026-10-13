@@ -3,6 +3,7 @@ import type { Lang } from "@/i18n/config";
 import { useTranslations } from "@/i18n/utils";
 import { site } from "@/data/site";
 import { getProjectsByCategory } from "@/lib/projects";
+import { projectList } from "@/lib/seo";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Button from "@/components/Button.astro";
 import CaseStudyRow from "@/components/CaseStudyRow.astro";
@@ -24,6 +25,9 @@ const [live, client, code, inProgress] = await Promise.all([
     getProjectsByCategory("in-progress"),
 ]);
 const more = [...inProgress, ...code];
+const structuredData = [
+    projectList([...live, ...client, ...more], lang, Astro.site ?? new URL(Astro.url.origin)),
+];
 ---
 
 <BaseLayout
@@ -31,6 +35,7 @@ const more = [...inProgress, ...code];
     routeId="projects"
     title={t("meta.projects.title")}
     description={t("meta.projects.description")}
+    structuredData={structuredData}
 >
     <HeroSection
         eyebrow={t("projects.eyebrow")}

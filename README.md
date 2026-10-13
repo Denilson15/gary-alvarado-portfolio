@@ -154,10 +154,6 @@ Every push to `main` redeploys the site.
 
 ## To fill in
 
-Search the code for `PLACEHOLDER` or `PENDIENTE` to find the remaining text placeholders.
-
-- [ ] **Pricing**: `services.pricingBody` in both translation files
-- [ ] **Testimonials**: `services.testimonialsBody`, with real quotes used with permission (or remove the block from `src/views/ServicesView.astro`)
 - [ ] **Screenshots** for every project except the Communication System (see "Add a project")
 - [ ] **Check the live links**: none of the live URLs could be load-tested from the build environment
 - [ ] **Tenzies**: add a `liveUrl` if it's deployed, and confirm the description matches the game

@@ -4,19 +4,19 @@
         "titleTemplate": "{page} · Gary Alvarado",
         "home": {
             "title": "Gary Alvarado · Software, IA y HCI",
-            "description": "Gary Alvarado estudia la maestría en Ciencias de la Computación en UC Davis y desarrolla software en la intersección de la IA, la visión por computadora, la robótica y la interacción humano-computadora."
+            "description": "Gary Alvarado, estudiante de maestría en Computación en UC Davis, crea software de IA, visión por computadora, robótica y HCI para educación y salud."
         },
         "projects": {
             "title": "Proyectos",
-            "description": "Proyectos en línea, sitios web para clientes y trabajos académicos de Gary Alvarado, desde herramientas 3D para estudiar anatomía hasta un sistema de chat multiusuario en Java."
+            "description": "Proyectos de Gary Alvarado: herramientas 3D de anatomía, un sistema de chat en Java, apps en React y sitios web para clientes."
         },
         "about": {
             "title": "Sobre mí",
-            "description": "Gary Alvarado estudia la maestría en Ciencias de la Computación en UC Davis. Le interesan la IA, la visión por computadora, la robótica y la HCI, y fue maestro de computación en preparatoria."
+            "description": "Gary Alvarado estudia la maestría en Computación en UC Davis. Le interesan la IA, la visión por computadora, la robótica y la HCI; fue maestro."
         },
         "services": {
-            "title": "Servicios web",
-            "description": "Sitios web rápidos y bilingües a la medida para pequeños negocios y particulares en el Área de la Bahía y Davis: páginas de aterrizaje, sitios para negocios y rediseños."
+            "title": "Diseño web para pequeños negocios",
+            "description": "Sitios web rápidos y bilingües para pequeños negocios y particulares en el Área de la Bahía y Davis: páginas de aterrizaje, sitios y rediseños."
         },
         "contact": {
             "title": "Contacto",
@@ -63,7 +63,6 @@
         "code": "Código",
         "viewProject": "Ver proyecto",
         "learnMore": "Más información",
-        "placeholder": "Pendiente",
         "backHome": "Volver al inicio"
     },
     "home": {
@@ -298,10 +297,6 @@
                 "body": "Conectamos su dominio, publicamos el sitio y le muestro cómo mantenerlo al día."
             }
         ],
-        "pricingTitle": "Precios",
-        "pricingBody": "[PENDIENTE: Agregue sus precios, paquetes o una nota como \"Cada proyecto se cotiza de forma individual después de la primera llamada.\"]",
-        "testimonialsTitle": "Lo que dicen los clientes",
-        "testimonialsBody": "[PENDIENTE: Agregue aquí testimonios reales, con permiso de cada cliente. Mantenga esta sección oculta hasta tenerlos.]",
         "formTitle": "Solicitar cotización",
         "formLead": "Cuénteme un poco sobre su proyecto. Le responderé por correo para agendar una llamada breve.",
         "form": {

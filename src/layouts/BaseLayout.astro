@@ -12,6 +12,7 @@ import { getPath, type RouteId } from "@/i18n/routes";
 import { useTranslations } from "@/i18n/utils";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import { breadcrumbs, personAndWebsite } from "@/lib/seo";
 
 interface Props {
     lang: Lang;
@@ -20,9 +21,11 @@ interface Props {
     title?: string;
     description: string;
     noindex?: boolean;
+    /** Extra schema.org objects for this page (Person, WebSite and breadcrumbs are added automatically). */
+    structuredData?: Record<string, unknown>[];
 }
 
-const { lang, routeId, title, description, noindex = false } = Astro.props;
+const { lang, routeId, title, description, noindex = false, structuredData = [] } = Astro.props;
 const t = useTranslations(lang);
 
 const fullTitle = title ? t("meta.titleTemplate", { page: title }) : t("meta.home.title");
@@ -33,6 +36,15 @@ const alternates = (Object.keys(languages) as Lang[]).map((code) => ({
     href: new URL(getPath(routeId, code), site).href,
 }));
 const xDefault = new URL(getPath(routeId, "en"), site).href;
+
+const jsonLd = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+        ...personAndWebsite(lang, site),
+        ...[breadcrumbs(lang, routeId, site)].filter(Boolean),
+        ...structuredData,
+    ],
+}).replace(/</g, "\\u003c");
 
 // Social preview images live in public/og-en.jpg and public/og-es.jpg (1200 × 630).
 const ogImageUrl = new URL(`/og-${lang}.jpg`, site).href;
@@ -67,6 +79,7 @@ const ogImageUrl = new URL(`/og-${lang}.jpg`, site).href;
         <meta property="og:locale" content={ogLocale[lang]} />
         <meta property="og:locale:alternate" content={ogLocale[lang === "en" ? "es" : "en"]} />
         <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content={t("meta.ogImageAlt")} />
@@ -74,6 +87,8 @@ const ogImageUrl = new URL(`/og-${lang}.jpg`, site).href;
         <meta name="twitter:title" content={fullTitle} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImageUrl} />
+        <meta name="author" content="Gary Alvarado" />
+        {!noindex && <script type="application/ld+json" set:html={jsonLd} />}
 
         <script is:inline>
             // Apply the saved theme before first paint. The site opens dark unless the visitor chose light.

@@ -4,7 +4,7 @@
         "titleTemplate": "{page} · Gary Alvarado",
         "home": {
             "title": "Gary Alvarado · Software, AI & HCI",
-            "description": "Gary Alvarado is a Computer Science master's student at UC Davis building software at the intersection of AI, computer vision, robotics, and human-computer interaction."
+            "description": "Gary Alvarado, MS Computer Science student at UC Davis, builds software where AI, computer vision, robotics, and HCI meet, for education and health."
         },
         "projects": {
             "title": "Projects",
@@ -12,10 +12,10 @@
         },
         "about": {
             "title": "About",
-            "description": "Gary Alvarado is an MS Computer Science student at UC Davis interested in AI, computer vision, robotics, and HCI, with a background in teaching high school computer science."
+            "description": "Gary Alvarado is a UC Davis MS Computer Science student focused on AI, computer vision, robotics, and HCI, and a former AP CS high school teacher."
         },
         "services": {
-            "title": "Web services",
+            "title": "Web design for small businesses",
             "description": "Custom, fast, bilingual websites for small businesses and individuals in the Bay Area and Davis: landing pages, small business sites, and redesigns."
         },
         "contact": {
@@ -63,7 +63,6 @@
         "code": "Code",
         "viewProject": "View project",
         "learnMore": "Learn more",
-        "placeholder": "Placeholder",
         "backHome": "Back to home"
     },
     "home": {
@@ -298,10 +297,6 @@
                 "body": "We connect your domain, go live, and I show you how to keep things up to date."
             }
         ],
-        "pricingTitle": "Pricing",
-        "pricingBody": "[PLACEHOLDER: Add your pricing, packages, or a note such as \"Every project is quoted individually after our first call.\"]",
-        "testimonialsTitle": "What clients say",
-        "testimonialsBody": "[PLACEHOLDER: Add real testimonials here, with the client's permission. Leave this section hidden until you have them.]",
         "formTitle": "Request a quote",
         "formLead": "Tell me a bit about your project. I'll follow up by email to set up a short call.",
         "form": {

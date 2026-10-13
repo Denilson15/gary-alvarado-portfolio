@@ -2,12 +2,12 @@
 import type { Lang } from "@/i18n/config";
 import { getDictionary, useTranslations } from "@/i18n/utils";
 import { getProjectsByCategory } from "@/lib/projects";
+import { webServices } from "@/lib/seo";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Button from "@/components/Button.astro";
 import FormField from "@/components/FormField.astro";
 import Icon from "@/components/Icon.astro";
 import NetlifyForm from "@/components/NetlifyForm.astro";
-import Placeholder from "@/components/Placeholder.astro";
 import CaseStudyRow from "@/components/CaseStudyRow.astro";
 import HeroSection from "@/components/HeroSection.astro";
 
@@ -19,6 +19,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const dict = getDictionary(lang);
 const clientWork = await getProjectsByCategory("client");
+const structuredData = [webServices(dict, lang, Astro.site ?? new URL(Astro.url.origin))];
 
 const typeOptions = Object.entries(dict.services.form.typeOptions).map(([value, label]) => ({
     value,
@@ -34,6 +35,7 @@ const languageOptions = Object.entries(dict.services.form.languageOptions).map(
     routeId="services"
     title={t("meta.services.title")}
     description={t("meta.services.description")}
+    structuredData={structuredData}
 >
     <HeroSection
         eyebrow={t("services.eyebrow")}
@@ -151,21 +153,6 @@ const languageOptions = Object.entries(dict.services.form.languageOptions).map(
                 </li>
             ))}
         </ol>
-    </section>
-
-    <section class="container-page grid gap-6 pt-24 lg:grid-cols-2">
-        <div data-reveal>
-            <h2 class="text-2xl">{t("services.pricingTitle")}</h2>
-            <Placeholder label={t("common.placeholder")} class="mt-4">
-                {t("services.pricingBody")}
-            </Placeholder>
-        </div>
-        <div data-reveal>
-            <h2 class="text-2xl">{t("services.testimonialsTitle")}</h2>
-            <Placeholder label={t("common.placeholder")} class="mt-4">
-                {t("services.testimonialsBody")}
-            </Placeholder>
-        </div>
     </section>
 
     <section id="quote" class="container-page pt-24" aria-labelledby="quote-heading">
