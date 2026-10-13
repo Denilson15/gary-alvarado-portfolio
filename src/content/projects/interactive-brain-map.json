@@ -17,6 +17,10 @@
     "year": 2026,
     "liveUrl": "https://denilson15.github.io/Interactive-Brain-Map/",
     "repoUrl": "https://github.com/Denilson15/Interactive-Brain-Map",
+    "image": "../../assets/projects/interactive-brain-map.jpg",
+    "video": {
+        "mp4": "/projects/interactive-brain-map.mp4"
+    },
     "hue": 268,
     "featured": true,
     "order": 1
